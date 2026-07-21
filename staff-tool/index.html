@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goldman Equipment — Quick Quote Tool</title>
+<link rel="stylesheet" href="staff.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">GE</div>
+    <div>
+      <div class="title" id="site-title">Goldman Equipment</div>
+      <div class="subtitle">Quick Quote Tool — Internal Use</div>
+    </div>
+  </div>
+</header>
+<div id="promo-banner"></div>
+<div id="load-error" style="display:none;"></div>
+
+<main>
+  <div id="catalog-pane">
+    <div id="search-row">
+      <input id="search-box" type="text" placeholder="Search model name...">
+    </div>
+    <div id="cat-tabs"></div>
+    <div id="result-count"></div>
+    <div id="model-list"></div>
+  </div>
+
+  <div id="quote-pane">
+    <h2>Quote Builder</h2>
+    <div id="quote-body">
+      <div id="no-selection">Loading catalog…</div>
+    </div>
+  </div>
+</main>
+
+<script src="config.js"></script>
+<script src="airtable-client.js"></script>
+<script src="staff.js"></script>
+</body>
+</html>

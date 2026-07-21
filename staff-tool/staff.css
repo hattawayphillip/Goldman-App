@@ -1,0 +1,103 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #f4f6f2; color: #1c2420;
+}
+header {
+  background: linear-gradient(150deg,#14330F,#367C2B 80%); color: #fff;
+  padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+header .brand { display: flex; align-items: center; gap: 12px; }
+header .logo {
+  width: 38px; height: 38px; border-radius: 10px; background: #FFDE00; color: #14330F;
+  display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; flex-shrink: 0;
+}
+header .title { font-size: 16px; font-weight: 900; }
+header .subtitle { font-size: 11px; opacity: .85; text-transform: uppercase; letter-spacing: .5px; }
+#promo-banner {
+  background: #FFDE00; color: #231d00; padding: 9px 20px; font-size: 13px; font-weight: 700;
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+#promo-banner .badge {
+  background: #231d00; color: #FFDE00; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px;
+}
+#load-error {
+  background: #fdecea; color: #a03328; border-bottom: 1px solid #f3c6c1; padding: 12px 20px; font-size: 13px; font-weight: 600;
+}
+main { display: grid; grid-template-columns: minmax(320px, 1fr) minmax(340px, 420px); gap: 0; align-items: start; }
+@media (max-width: 860px) { main { grid-template-columns: 1fr; } }
+
+#catalog-pane { padding: 16px; }
+#search-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+#search-box {
+  flex: 1; min-width: 160px; padding: 10px 13px; border: 1.5px solid #d8ded4; border-radius: 10px; font-size: 14px;
+}
+#cat-tabs { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 12px; }
+.cat-tab {
+  flex-shrink: 0; padding: 8px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 700; cursor: pointer;
+  border: 1.5px solid #d8ded4; background: #fff; color: #4a544e; white-space: nowrap;
+}
+.cat-tab.active { background: #367C2B; border-color: #367C2B; color: #fff; }
+#model-list { display: flex; flex-direction: column; gap: 6px; max-height: 74vh; overflow-y: auto; }
+.model-row {
+  background: #fff; border: 1.5px solid #e3e7e1; border-radius: 12px; padding: 11px 13px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+}
+.model-row:hover { border-color: #367C2B; background: #fbfefa; }
+.model-row.selected { border-color: #367C2B; background: #EEF6EC; }
+.model-row .name { font-weight: 800; font-size: 14px; }
+.model-row .blurb { font-size: 11.5px; color: #8a938d; margin-top: 2px; }
+.model-row .price { font-size: 12.5px; font-weight: 800; color: #23511D; white-space: nowrap; }
+.model-row .price.none { color: #a7ada6; font-weight: 700; }
+.model-row .price.placeholder { color: #a5790a; }
+#result-count { font-size: 12px; color: #8a938d; margin: 4px 0 10px; }
+
+#quote-pane {
+  background: #fff; border-left: 1px solid #e3e7e1; padding: 18px; position: sticky; top: 0; height: 100vh;
+  overflow-y: auto;
+}
+#quote-pane h2 { font-size: 16px; margin: 0 0 12px; }
+#no-selection { color: #8a938d; font-size: 13.5px; padding: 30px 4px; text-align: center; }
+.qp-section { margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid #eef0ec; }
+.qp-label { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .6px; color: #8a938d; margin-bottom: 8px; }
+#selected-name { font-size: 19px; font-weight: 900; }
+#selected-blurb { font-size: 12.5px; color: #8a938d; margin-top: 3px; }
+.placeholder-note { font-size: 11px; color: #a5790a; background: #fff7dd; border: 1px solid #f0dc96; border-radius: 8px; padding: 6px 9px; margin-top: 8px; }
+.price-field { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.price-field label { font-size: 12px; font-weight: 700; color: #4a544e; width: 88px; flex-shrink: 0; }
+.price-field input { flex: 1; padding: 8px 10px; border: 1.5px solid #d8ded4; border-radius: 8px; font-size: 14px; font-weight: 700; }
+.impl-row { display: flex; align-items: center; gap: 9px; padding: 8px 9px; border: 1.5px solid #e3e7e1; border-radius: 9px; margin-bottom: 5px; cursor: pointer; font-size: 12.5px; }
+.impl-row:hover { border-color: #367C2B; }
+.impl-row.checked { border-color: #367C2B; background: #EEF6EC; }
+.impl-row .impl-name { flex: 1; font-weight: 700; }
+.impl-row .impl-price { font-weight: 800; }
+.impl-group-label { font-size: 10.5px; font-weight: 900; text-transform: uppercase; color: #a7ada6; margin: 10px 0 5px; }
+#subtotal-row { display: flex; justify-content: space-between; font-size: 15px; font-weight: 900; margin-top: 10px; }
+#subtotal-row .amt { color: #1d6b2e; font-family: Georgia, serif; }
+
+.finance-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.finance-row label { font-size: 12px; font-weight: 700; color: #4a544e; width: 100px; flex-shrink: 0; }
+.finance-row input, .finance-row select { flex: 1; padding: 7px 9px; border: 1.5px solid #d8ded4; border-radius: 8px; font-size: 13px; }
+#term-tabs { display: flex; gap: 6px; flex: 1; flex-wrap: wrap; }
+.term-tab { flex: 1; text-align: center; padding: 7px 4px; border: 1.5px solid #d8ded4; border-radius: 8px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+.term-tab.active { background: #367C2B; border-color: #367C2B; color: #fff; }
+#monthly-result {
+  background: #EEF6EC; border: 1px solid #A9D2A0; border-radius: 12px; padding: 13px 15px; margin-top: 10px;
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+#monthly-result .amt { font-family: Georgia, serif; font-size: 22px; font-weight: 900; color: #23511D; }
+#finance-caveat { font-size: 10.5px; color: #a7ada6; margin-top: 8px; line-height: 1.5; }
+
+#actions { display: flex; gap: 8px; margin-top: 6px; }
+button.primary, button.secondary {
+  border: none; border-radius: 10px; padding: 12px; font-size: 13.5px; font-weight: 800; cursor: pointer; flex: 1;
+}
+button.primary { background: linear-gradient(140deg,#367C2B,#23511D); color: #fff; }
+button.secondary { background: #f2f4f0; color: #4a544e; }
+
+@media print {
+  header, #promo-banner, #catalog-pane, #actions { display: none !important; }
+  main { display: block; }
+  #quote-pane { position: static; height: auto; border: none; box-shadow: none; }
+}
