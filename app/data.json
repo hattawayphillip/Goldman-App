@@ -4,7 +4,7 @@
     "1025r": "img/m-1025r.jpg?v=1795143672116"
   },
   "lastUpdated": "November 19, 2026",
-  "adminPin": "1234",
+  "adminPin": "5299",
   "salesPin": "1111",
   "implTiers": [
     {
@@ -1974,7 +1974,8 @@
     "colorAccent": "#FFDE00",
     "fontSize": "15px",
     "storePhone": "",
-    "storeWeb": ""
+    "storeWeb": "",
+    "pushPins": true
   },
   "bulletins": [
     {
@@ -2593,7 +2594,7 @@
       "image": null
     }
   ],
-  "published": 1795143763178,
-  "pushPins": false,
-  "compat": {}
+  "published": 1795185945145,
+  "compat": {},
+  "pushPins": true
 }
