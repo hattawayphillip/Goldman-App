@@ -354,7 +354,7 @@ function finTag(m){
   if(fo){ const o=fo[0]; return o?(o.rate+'% · '+o.months+' mo'):((g&&g.finTag)||'Finance · see KF'); }
   return FIN[c.finType]||'';
 }
-const tractor=k=>k==='cut'||k==='5e3'||k==='5e4';
+const tractor=k=>k==='cut'||k==='5e3'||k==='5e4'||k==='5m';
 const byLabel=(a,b)=>a.m.label.localeCompare(b.m.label,undefined,{numeric:true});
 function spec(m){ const p=[]; if(m.hp) p.push(m.hp+' HP'); if(m.eng) p.push(m.eng); return p.join(' · '); }
 function photo(id){ return LOCALIMG['m:'+id]||(D.modelImages&&D.modelImages[id])||''; }
@@ -796,7 +796,7 @@ function openModelEdit(id){ const f=id?findModel(id):null; S.sheet={mode:f?'edit
 function drawModelEdit(){
   const sh=S.sheet, k=sh.k, mc=D.models[k], edit=sh.mode==='edit', cur=edit?findModel(sh.id).m:{};
   const d=sh.draft||{label:cur.label||'',hp:cur.hp||'',price:cur.price||''};
-  const incCat=mc.noInc?null:((mc.list.find(x=>x.incCat)||{}).incCat||null), cat=incCat?getCat(incCat):null;
+  const incCat=mc.noInc?null:(getCat(k)?k:((mc.list.find(x=>x.incCat)||{}).incCat||null)), cat=incCat?getCat(incCat):null;
   const grp=cat?`<label class="mf"><span>Incentive program</span><select id="meGrp"><option value="">None</option>${cat.groups.map(g=>`<option value="${esc(g.id)}"${g.id===cur.incGrp?' selected':''}>${esc(g.label)}</option>`).join('')}</select></label>`:'';
   const catSel=edit?'':`<label class="mf"><span>Category</span><select id="meCat">${catKeys().map(x=>`<option value="${esc(x)}"${x===k?' selected':''}>${esc(D.models[x].label)}</option>`).join('')}</select></label>`;
   $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>${edit?'Edit '+esc(cur.label):'Add a model'}</h3><div class="blk2" style="background:#fff;border-radius:18px;padding:4px 16px 16px;margin-bottom:12px">${catSel}
@@ -814,7 +814,7 @@ function saveModelEdit(){
   if(sh.mode==='edit'){
     const m=findModel(sh.id).m; m.label=label; m.price=price; if(hp>0) m.hp=hp; else delete m.hp; if(gsel){ if(grpId) m.incGrp=grpId; else delete m.incGrp; }
   } else {
-    const incCat=mc.noInc?null:((mc.list.find(x=>x.incCat)||{}).incCat||null);
+    const incCat=mc.noInc?null:(getCat(k)?k:((mc.list.find(x=>x.incCat)||{}).incCat||null));
     let id=label.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'model', n=id, i=2; while(findModel(n)) n=id+'-'+(i++);
     const m={id:n,label,price}; if(hp>0) m.hp=hp; if(incCat){ m.incCat=incCat; if(grpId) m.incGrp=grpId; }
     mc.list.push(m);
