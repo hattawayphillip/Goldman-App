@@ -1,7 +1,9 @@
 {
   "_v": 7,
-  "modelImages": {},
-  "lastUpdated": "July 1, 2026",
+  "modelImages": {
+    "1025r": "img/m-1025r.jpg?v=1795143672116"
+  },
+  "lastUpdated": "November 19, 2026",
   "adminPin": "1234",
   "salesPin": "1111",
   "implTiers": [
@@ -33,9 +35,9 @@
   "categories": [
     {
       "id": "cut",
-      "icon": "\ud83d\ude9c",
+      "icon": "🚜",
       "name": "CUT 1-4",
-      "desc": "1023E\u20134075R",
+      "desc": "1023E–4075R",
       "finType": "zero72",
       "dgbStd": 2,
       "dgbAged": 5,
@@ -53,7 +55,7 @@
           "cashNote": "",
           "settle": [],
           "cashTable": {
-            "note": "Cash = no finance \u2014 pick one.",
+            "note": "Cash = no finance — pick one.",
             "cols": [
               "With JD Finance",
               "Cash Purchase"
@@ -109,7 +111,7 @@
           "cashNote": "",
           "settle": [],
           "cashTable": {
-            "note": "Cash = no finance \u2014 pick one.",
+            "note": "Cash = no finance — pick one.",
             "cols": [
               "With JD Finance",
               "Cash Purchase"
@@ -179,7 +181,7 @@
           "cashNote": "",
           "settle": [],
           "cashTable": {
-            "note": "Two separate programs \u2014 pick ONE column. LMPP line requires dealer LMPP opt-in.",
+            "note": "Two separate programs — pick ONE column. LMPP line requires dealer LMPP opt-in.",
             "cols": [
               "With JD Finance",
               "Cash Purchase"
@@ -235,7 +237,7 @@
           "cashNote": "",
           "settle": [],
           "cashTable": {
-            "note": "Cash = no finance \u2014 pick one. LMPP dealer opt-in required for the 1E 23 LMPP line.",
+            "note": "Cash = no finance — pick one. LMPP dealer opt-in required for the 1E 23 LMPP line.",
             "cols": [
               "With JD Finance",
               "Cash Purchase"
@@ -276,9 +278,9 @@
     },
     {
       "id": "5e3",
-      "icon": "\ud83d\ude9c",
+      "icon": "🚜",
       "name": "5E 3-Cyl",
-      "desc": "5045E\u20135075E",
+      "desc": "5045E–5075E",
       "finType": "zero72",
       "dgbStd": 2,
       "dgbAged": 5,
@@ -291,12 +293,12 @@
           "exp": "Nov 1, 2026",
           "impl": true,
           "rs": 3000,
-          "rsNote": "Customer trades in a 2016+ competitive tractor (35\u201385 HP). JD PO + trade-in required at settlement.",
+          "rsNote": "Customer trades in a 2016+ competitive tractor (35–85 HP). JD PO + trade-in required at settlement.",
           "cash": [],
           "cashNote": "",
           "settle": [],
           "cashTable": {
-            "note": "MY26 & prior only. Cash = no finance \u2014 pick one.",
+            "note": "MY26 & prior only. Cash = no finance — pick one.",
             "cols": [
               "With JD Finance",
               "Cash Purchase"
@@ -323,9 +325,9 @@
     },
     {
       "id": "5e4",
-      "icon": "\ud83d\ude9c",
+      "icon": "🚜",
       "name": "5E 4-Cyl",
-      "desc": "5090E\u20135100E",
+      "desc": "5090E–5100E",
       "finType": "zero60",
       "dgbStd": 2,
       "dgbAged": 5,
@@ -338,12 +340,12 @@
           "exp": "Aug 4, 2026",
           "impl": false,
           "rs": 3000,
-          "rsNote": "Trade in a 2016+ competitive tractor (50\u2013120 HP). JD PO + trade-in required at settlement.",
+          "rsNote": "Trade in a 2016+ competitive tractor (50–120 HP). JD PO + trade-in required at settlement.",
           "cash": [],
           "cashNote": "",
           "settle": [],
           "cashTable": {
-            "note": "Cash = no finance \u2014 pick one.",
+            "note": "Cash = no finance — pick one.",
             "cols": [
               "With JD Finance",
               "Cash Purchase"
@@ -363,7 +365,7 @@
     },
     {
       "id": "comm",
-      "icon": "\ud83c\udf3f",
+      "icon": "🌿",
       "name": "Comm Mowing",
       "desc": "Z900 / Z700 / QuikTrak",
       "finType": "commMow",
@@ -409,7 +411,7 @@
           "cashNote": "",
           "settle": [
             {
-              "lbl": "S1 + S2 \u2014 Claim BOTH",
+              "lbl": "S1 + S2 — Claim BOTH",
               "a": 1000,
               "w": ""
             }
@@ -473,7 +475,7 @@
     },
     {
       "id": "riding",
-      "icon": "\ud83c\udfe1",
+      "icon": "🏡",
       "name": "Riding Lawn",
       "desc": "S / X / Z Series",
       "finType": "ridingLawn",
@@ -631,8 +633,8 @@
   "models": {
     "cut": {
       "label": "CUT 1-4 Series",
-      "icon": "\ud83d\ude9c",
-      "note": "Prices AT COST \u2014 update before quoting",
+      "icon": "🚜",
+      "note": "Prices AT COST — update before quoting",
       "atCost": true,
       "list": [
         {
@@ -855,8 +857,8 @@
     },
     "5e3": {
       "label": "5E 3-Cylinder",
-      "icon": "\ud83d\ude9c",
-      "note": "Prices AT COST \u2014 update before quoting",
+      "icon": "🚜",
+      "note": "Prices AT COST — update before quoting",
       "atCost": true,
       "list": [
         {
@@ -943,8 +945,8 @@
     },
     "5e4": {
       "label": "5E 4-Cylinder",
-      "icon": "\ud83d\ude9c",
-      "note": "Prices AT COST \u2014 update before quoting",
+      "icon": "🚜",
+      "note": "Prices AT COST — update before quoting",
       "atCost": true,
       "list": [
         {
@@ -999,8 +1001,8 @@
     },
     "comm": {
       "label": "Commercial Mowing",
-      "icon": "\ud83c\udf3f",
-      "note": "Prices at 10% margin \u2014 DGB/JDF not included",
+      "icon": "🌿",
+      "note": "Prices at 10% margin — DGB/JDF not included",
       "atCost": false,
       "list": [
         {
@@ -1378,7 +1380,7 @@
     },
     "riding": {
       "label": "Residential Mowing",
-      "icon": "\ud83c\udfe1",
+      "icon": "🏡",
       "note": "",
       "atCost": false,
       "list": [
@@ -1785,8 +1787,8 @@
     },
     "sxs": {
       "label": "Side by Sides",
-      "icon": "\ud83d\udefb",
-      "note": "Price reference only \u2014 No JDF incentives",
+      "icon": "🛻",
+      "note": "Price reference only — No JDF incentives",
       "atCost": false,
       "noInc": true,
       "list": [
@@ -1923,14 +1925,14 @@
     "houseRules": [
       {
         "title": "0% / 72 Months (under 100HP)",
-        "body": "Auto-approved. Offer first on every CUT and 5E 3-Cyl deal. Use 84M to close if needed \u2014 also auto-approved. (5E 4-Cyl leads at 0%/60M instead \u2014 see its own Reference row.)"
+        "body": "Auto-approved. Offer first on every CUT and 5E 3-Cyl deal. Use 84M to close if needed — also auto-approved. (5E 4-Cyl leads at 0%/60M instead — see its own Reference row.)"
       },
       {
-        "title": "PowerGard \u2014 Mandatory on Every Deal",
+        "title": "PowerGard — Mandatory on Every Deal",
         "body": "Neal Conderey will call to find out why it was not sold. Document if customer declines."
       },
       {
-        "title": "Equipment Mobile / OPP Center \u2014 Required at Delivery",
+        "title": "Equipment Mobile / OPP Center — Required at Delivery",
         "body": "5000 Series+: OPP Center account. Below 5000 Series: Equipment Mobile / Operations Center."
       },
       {
@@ -1939,7 +1941,7 @@
       },
       {
         "title": "DGB-SASA Discount Authority",
-        "body": "CUT/Small Ag: 2% standard / 5% aged \u00b7 Comm Mowers: 3% / 5% aged \u00b7 Above limit: See KF \u2014 no exceptions."
+        "body": "CUT/Small Ag: 2% standard / 5% aged · Comm Mowers: 3% / 5% aged · Above limit: See KF — no exceptions."
       }
     ],
     "checklist": [
@@ -1949,7 +1951,7 @@
       },
       {
         "text": "Verify customer is NOT on Government Direct / SABD / Special Discount",
-        "warn": "These programs cancel the JD incentive \u2014 cannot stack."
+        "warn": "These programs cancel the JD incentive — cannot stack."
       },
       {
         "text": "Confirm expiration date and submit paperwork on time",
@@ -1957,17 +1959,17 @@
       }
     ],
     "financeText": {
-      "leadLabel": "Lead Offer \u2014 Auto-Approved \u2014 No Call Needed",
-      "leadSub": "John Deere Financial \u00b7 No Money Down",
-      "leadAuth": "AUTO-APPROVED \u00b7 FULL AUTHORITY",
-      "backupText": "0% for 84 Months \u2014 Also Auto-Approved",
+      "leadLabel": "Lead Offer — Auto-Approved — No Call Needed",
+      "leadSub": "John Deere Financial · No Money Down",
+      "leadAuth": "AUTO-APPROVED · FULL AUTHORITY",
+      "backupText": "0% for 84 Months — Also Auto-Approved",
       "backupNote": "Offer 72 first. Use 84 to close. You have the authority.",
-      "over100Note": "Published options under 2.5% dealer participation are auto-approved. Over 2.5%? See KF \u2014 do not commit without approval."
+      "over100Note": "Published options under 2.5% dealer participation are auto-approved. Over 2.5%? See KF — do not commit without approval."
     }
   },
   "settings": {
     "appTitle": "Goldman Equipment",
-    "appSub": "John Deere \u2014 Sales Tool",
+    "appSub": "John Deere — Sales Tool",
     "colorPrimary": "#367C2B",
     "colorAccent": "#FFDE00",
     "fontSize": "15px",
@@ -2524,7 +2526,7 @@
       "cat": "Lane Shark",
       "brand": "Lane Shark",
       "model": "LS3",
-      "desc": "5\u20138.5 GPM",
+      "desc": "5–8.5 GPM",
       "price": 4900,
       "bonus": false
     },
@@ -2533,7 +2535,7 @@
       "cat": "Lane Shark",
       "brand": "Lane Shark",
       "model": "LS4",
-      "desc": "8.5\u201320 GPM",
+      "desc": "8.5–20 GPM",
       "price": 5100,
       "bonus": false
     },
@@ -2550,47 +2552,48 @@
   "catDisplay": [
     {
       "key": "cut",
-      "icon": "\ud83d\ude9c",
+      "icon": "🚜",
       "name": "CUT 1-4",
       "desc": "1025R-4075R",
       "image": null
     },
     {
       "key": "5e3",
-      "icon": "\ud83d\ude9c",
+      "icon": "🚜",
       "name": "5E 3-Cyl",
       "desc": "5050E-5075E",
       "image": null
     },
     {
       "key": "5e4",
-      "icon": "\ud83d\ude9c",
+      "icon": "🚜",
       "name": "5E 4-Cyl",
       "desc": "5090E-5100E",
       "image": null
     },
     {
       "key": "comm",
-      "icon": "\ud83c\udf3f",
+      "icon": "🌿",
       "name": "Comm Mowing",
       "desc": "Z900 / QuikTrak",
       "image": null
     },
     {
       "key": "riding",
-      "icon": "\ud83c\udfe1",
+      "icon": "🏡",
       "name": "Residential",
       "desc": "S / X / Z Series",
       "image": null
     },
     {
       "key": "sxs",
-      "icon": "\ud83d\udefb",
+      "icon": "🛻",
       "name": "Side by Sides",
       "desc": "Gators / XUV",
       "image": null
     }
   ],
-  "published": 1788047475182,
-  "pushPins": false
+  "published": 1795143763178,
+  "pushPins": false,
+  "compat": {}
 }
