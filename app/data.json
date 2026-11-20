@@ -1,0 +1,2596 @@
+{
+  "_v": 7,
+  "modelImages": {},
+  "lastUpdated": "July 1, 2026",
+  "adminPin": "1234",
+  "salesPin": "1111",
+  "implTiers": [
+    {
+      "label": "0",
+      "bonus": 0
+    },
+    {
+      "label": "1",
+      "bonus": 0
+    },
+    {
+      "label": "2",
+      "bonus": 250
+    },
+    {
+      "label": "3",
+      "bonus": 300
+    },
+    {
+      "label": "4",
+      "bonus": 350
+    },
+    {
+      "label": "5+",
+      "bonus": 400
+    }
+  ],
+  "categories": [
+    {
+      "id": "cut",
+      "icon": "\ud83d\ude9c",
+      "name": "CUT 1-4",
+      "desc": "1023E\u20134075R",
+      "finType": "zero72",
+      "dgbStd": 2,
+      "dgbAged": 5,
+      "opp": "equip-mobile",
+      "groups": [
+        {
+          "id": "cut_a",
+          "label": "1023E / 1025R / 2025R / 2032R / 2038R / 3E / 3D",
+          "bul": "A252-26U",
+          "exp": "Nov 1, 2026",
+          "impl": true,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "Cash = no finance \u2014 pick one.",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": [
+              {
+                "m": "1023E",
+                "vals": [
+                  0,
+                  1000
+                ]
+              },
+              {
+                "m": "1025R",
+                "vals": [
+                  0,
+                  2750
+                ]
+              },
+              {
+                "m": "2025R",
+                "vals": [
+                  0,
+                  3500
+                ]
+              },
+              {
+                "m": "3D",
+                "vals": [
+                  0,
+                  1750
+                ]
+              },
+              {
+                "m": "3E",
+                "vals": [
+                  0,
+                  2750
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "cut_b",
+          "label": "3033R / 3039R / 3046R / 4044R / 4052R / 4066R / 4075R",
+          "bul": "A193-26U",
+          "exp": "Aug 4, 2026",
+          "impl": true,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "Cash = no finance \u2014 pick one.",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": [
+              {
+                "m": "3033R",
+                "vals": [
+                  0,
+                  2500
+                ]
+              },
+              {
+                "m": "3039R",
+                "vals": [
+                  0,
+                  3000
+                ]
+              },
+              {
+                "m": "3046R",
+                "vals": [
+                  0,
+                  2500
+                ]
+              },
+              {
+                "m": "4044R",
+                "vals": [
+                  0,
+                  3000
+                ]
+              },
+              {
+                "m": "4052R",
+                "vals": [
+                  0,
+                  3000
+                ]
+              },
+              {
+                "m": "4066R",
+                "vals": [
+                  0,
+                  4000
+                ]
+              },
+              {
+                "m": "4075R",
+                "vals": [
+                  0,
+                  4000
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "cut_c",
+          "label": "4044M / 4052M / 4066M (incl. HD)",
+          "bul": "A253-26U",
+          "exp": "Nov 1, 2026",
+          "impl": true,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "Two separate programs \u2014 pick ONE column. LMPP line requires dealer LMPP opt-in.",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": [
+              {
+                "m": "4044M",
+                "vals": [
+                  1500,
+                  4000
+                ]
+              },
+              {
+                "m": "4052M",
+                "vals": [
+                  2500,
+                  4500
+                ]
+              },
+              {
+                "m": "4066M",
+                "vals": [
+                  2500,
+                  5000
+                ]
+              },
+              {
+                "m": "4052M HD / 4066M HD",
+                "vals": [
+                  2500,
+                  5500
+                ]
+              },
+              {
+                "m": "4044M LMPP",
+                "vals": [
+                  2100,
+                  4000
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "cut_d",
+          "label": "1E 23 / 1M 25 / 1R 25",
+          "bul": "A174-26U",
+          "exp": "Aug 4, 2026",
+          "impl": true,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "Cash = no finance \u2014 pick one. LMPP dealer opt-in required for the 1E 23 LMPP line.",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": [
+              {
+                "m": "1E 23",
+                "vals": [
+                  0,
+                  1000
+                ]
+              },
+              {
+                "m": "1M 25",
+                "vals": [
+                  0,
+                  750
+                ]
+              },
+              {
+                "m": "1R 25",
+                "vals": [
+                  0,
+                  1000
+                ]
+              },
+              {
+                "m": "1E 23 LMPP",
+                "vals": [
+                  300,
+                  1000
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "5e3",
+      "icon": "\ud83d\ude9c",
+      "name": "5E 3-Cyl",
+      "desc": "5045E\u20135075E",
+      "finType": "zero72",
+      "dgbStd": 2,
+      "dgbAged": 5,
+      "opp": "equip-mobile",
+      "groups": [
+        {
+          "id": "5e3_a",
+          "label": "5045E / 5050E / 5055E / 5060E / 5065E / 5067E / 5075E",
+          "bul": "A251-26U",
+          "exp": "Nov 1, 2026",
+          "impl": true,
+          "rs": 3000,
+          "rsNote": "Customer trades in a 2016+ competitive tractor (35\u201385 HP). JD PO + trade-in required at settlement.",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "MY26 & prior only. Cash = no finance \u2014 pick one.",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": [
+              {
+                "m": "Open Station",
+                "vals": [
+                  0,
+                  4000
+                ]
+              },
+              {
+                "m": "CAB",
+                "vals": [
+                  0,
+                  3000
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "5e4",
+      "icon": "\ud83d\ude9c",
+      "name": "5E 4-Cyl",
+      "desc": "5090E\u20135100E",
+      "finType": "zero60",
+      "dgbStd": 2,
+      "dgbAged": 5,
+      "opp": "opp-center",
+      "groups": [
+        {
+          "id": "5e4_a",
+          "label": "5090E / 5090EL / 5100E",
+          "bul": "A206-26U",
+          "exp": "Aug 4, 2026",
+          "impl": false,
+          "rs": 3000,
+          "rsNote": "Trade in a 2016+ competitive tractor (50\u2013120 HP). JD PO + trade-in required at settlement.",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "Cash = no finance \u2014 pick one.",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": [
+              {
+                "m": "All models",
+                "vals": [
+                  0,
+                  3000
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "comm",
+      "icon": "\ud83c\udf3f",
+      "name": "Comm Mowing",
+      "desc": "Z900 / Z700 / QuikTrak",
+      "finType": "commMow",
+      "dgbStd": 3,
+      "dgbAged": 5,
+      "opp": "equip-mobile",
+      "groups": [
+        {
+          "id": "cm_a",
+          "label": "Walk-Behinds / QuikTraks / Z900 ZTraks (B/E/R)",
+          "bul": "T053+T061",
+          "exp": "Finance: Sep 1, 2026 | Bonus: Nov 1, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [
+            {
+              "lbl": "S1 Bonus",
+              "a": 500,
+              "w": ""
+            }
+          ],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        },
+        {
+          "id": "cm_b",
+          "label": "Z900M & Diesel ZTraks (Z994R / Z997M / Z997R / Z998R)",
+          "bul": "T053+T061",
+          "exp": "Finance: Sep 1, 2026 | Bonus: Nov 1, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [
+            {
+              "lbl": "S1 + S2 \u2014 Claim BOTH",
+              "a": 1000,
+              "w": ""
+            }
+          ],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        },
+        {
+          "id": "cm_c",
+          "label": "Z700E / Z700M ZTraks",
+          "bul": "T053+T061",
+          "exp": "Finance: Sep 1, 2026 | Bonus: Nov 1, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [
+            {
+              "lbl": "S3 Bonus",
+              "a": 750,
+              "w": ""
+            }
+          ],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        },
+        {
+          "id": "cm_d",
+          "label": "Front Mowers / WAMs",
+          "bul": "T053-26U",
+          "exp": "Sep 1, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "riding",
+      "icon": "\ud83c\udfe1",
+      "name": "Riding Lawn",
+      "desc": "S / X / Z Series",
+      "finType": "ridingLawn",
+      "dgbStd": null,
+      "dgbAged": null,
+      "opp": "none",
+      "groups": [
+        {
+          "id": "rl_a",
+          "label": "S100 Series",
+          "bul": "T052-26U",
+          "exp": "Aug 4, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        },
+        {
+          "id": "rl_b",
+          "label": "S200 / X330 / Z300R / Z500E",
+          "bul": "T052+T058",
+          "exp": "Aug 4, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [
+            {
+              "lbl": "S1 Bonus",
+              "a": 200,
+              "w": ""
+            }
+          ],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        },
+        {
+          "id": "rl_c",
+          "label": "Z500M ZTrak",
+          "bul": "T052+T058",
+          "exp": "Aug 4, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [
+            {
+              "lbl": "S2 Bonus",
+              "a": 300,
+              "w": ""
+            }
+          ],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        },
+        {
+          "id": "rl_d",
+          "label": "X580",
+          "bul": "T052+T058",
+          "exp": "Aug 4, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [
+            {
+              "lbl": "S3 Bonus",
+              "a": 500,
+              "w": ""
+            }
+          ],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        },
+        {
+          "id": "rl_e",
+          "label": "Z370RS",
+          "bul": "T052+T058",
+          "exp": "Aug 4, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [
+            {
+              "lbl": "S4 Bonus",
+              "a": 400,
+              "w": "NOT stackable with S1"
+            }
+          ],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        },
+        {
+          "id": "rl_f",
+          "label": "X700 Series",
+          "bul": "T052-26U",
+          "exp": "Aug 4, 2026",
+          "impl": false,
+          "rs": 0,
+          "rsNote": "",
+          "cash": [],
+          "cashNote": "",
+          "settle": [],
+          "cashTable": {
+            "note": "",
+            "cols": [
+              "With JD Finance",
+              "Cash Purchase"
+            ],
+            "rows": []
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "cut": {
+      "label": "CUT 1-4 Series",
+      "icon": "\ud83d\ude9c",
+      "note": "Prices AT COST \u2014 update before quoting",
+      "atCost": true,
+      "list": [
+        {
+          "id": "1025r",
+          "label": "1025R",
+          "price": 20800,
+          "hp": 25,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "1025r-tlb",
+          "label": "1025R TLB",
+          "price": 27700,
+          "hp": 25,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "2025r",
+          "label": "2025R",
+          "price": 23500,
+          "hp": 25,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "2032r",
+          "label": "2032R",
+          "price": 29175,
+          "hp": 32,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "2038r",
+          "label": "2038R",
+          "price": 31100,
+          "hp": 38,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "3025d",
+          "label": "3025D",
+          "price": 23250,
+          "hp": 25,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "3025e",
+          "label": "3025E",
+          "price": 24900,
+          "hp": 25,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "3032e",
+          "label": "3032E",
+          "price": 27300,
+          "hp": 32,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "3038e",
+          "label": "3038E",
+          "price": 29700,
+          "hp": 38,
+          "incCat": "cut",
+          "incGrp": "cut_a"
+        },
+        {
+          "id": "3033r",
+          "label": "3033R",
+          "price": 35100,
+          "hp": 33,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "3039r",
+          "label": "3039R",
+          "price": 37800,
+          "hp": 39,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "3046r",
+          "label": "3046R",
+          "price": 40900,
+          "hp": 46,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "4044m-h",
+          "label": "4044M Hydro",
+          "price": 38400,
+          "hp": 44,
+          "incCat": "cut",
+          "incGrp": "cut_c"
+        },
+        {
+          "id": "4044m-pr",
+          "label": "4044M PR",
+          "price": 37400,
+          "hp": 44,
+          "incCat": "cut",
+          "incGrp": "cut_c"
+        },
+        {
+          "id": "4052m-h",
+          "label": "4052M Hydro",
+          "price": 41400,
+          "hp": 52,
+          "incCat": "cut",
+          "incGrp": "cut_c"
+        },
+        {
+          "id": "4052m-pr",
+          "label": "4052M PR",
+          "price": 40400,
+          "hp": 52,
+          "incCat": "cut",
+          "incGrp": "cut_c"
+        },
+        {
+          "id": "4052m-hd",
+          "label": "4052M Heavy Duty",
+          "price": 48250,
+          "hp": 52,
+          "incCat": "cut",
+          "incGrp": "cut_c"
+        },
+        {
+          "id": "4066m-h",
+          "label": "4066M Hydro",
+          "price": 48100,
+          "hp": 66,
+          "incCat": "cut",
+          "incGrp": "cut_c"
+        },
+        {
+          "id": "4066m-pr",
+          "label": "4066M PR",
+          "price": 47000,
+          "hp": 66,
+          "incCat": "cut",
+          "incGrp": "cut_c"
+        },
+        {
+          "id": "4066m-hd",
+          "label": "4066M Heavy Duty",
+          "price": 54300,
+          "hp": 66,
+          "incCat": "cut",
+          "incGrp": "cut_c"
+        },
+        {
+          "id": "4044r-oos",
+          "label": "4044R OOS Hydro",
+          "price": 43300,
+          "hp": 44,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "4044r-cab",
+          "label": "4044R CAB Hydro",
+          "price": 53200,
+          "hp": 44,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "4052r-oos",
+          "label": "4052R OOS Hydro",
+          "price": 46400,
+          "hp": 52,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "4052r-cab",
+          "label": "4052R CAB Hydro",
+          "price": 56300,
+          "hp": 52,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "4066r-oos",
+          "label": "4066R OOS Hydro",
+          "price": 52350,
+          "hp": 66,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "4066r-cab",
+          "label": "4066R CAB Hydro",
+          "price": 62200,
+          "hp": 66,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        },
+        {
+          "id": "4075r-cab",
+          "label": "4075R CAB Hydro",
+          "price": 67300,
+          "hp": 75,
+          "incCat": "cut",
+          "incGrp": "cut_b"
+        }
+      ]
+    },
+    "5e3": {
+      "label": "5E 3-Cylinder",
+      "icon": "\ud83d\ude9c",
+      "note": "Prices AT COST \u2014 update before quoting",
+      "atCost": true,
+      "list": [
+        {
+          "id": "5050e-oos",
+          "label": "5050E OOS 9/3",
+          "price": 37000,
+          "hp": 50,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5060e-oos",
+          "label": "5060E OOS 12/12 PR",
+          "price": 43500,
+          "hp": 60,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5060e-std",
+          "label": "5060E Std CAB 12/12",
+          "price": 52200,
+          "hp": 60,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5060e-prem",
+          "label": "5060E Prem CAB 12/12",
+          "price": 57400,
+          "hp": 60,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5067e-oos",
+          "label": "5067E OOS 12/12 PR",
+          "price": 46200,
+          "hp": 67,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5067e-std",
+          "label": "5067E Std CAB 12/12",
+          "price": 54800,
+          "hp": 67,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5067e-prem",
+          "label": "5067E Prem CAB 12/12",
+          "price": 60100,
+          "hp": 67,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5075e-oos",
+          "label": "5075E OOS 12/12 PR",
+          "price": 48400,
+          "hp": 75,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5075e-std",
+          "label": "5075E Std CAB 12/12",
+          "price": 57000,
+          "hp": 75,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        },
+        {
+          "id": "5075e-prem",
+          "label": "5075E Prem CAB 12/12",
+          "price": 62300,
+          "hp": 75,
+          "incCat": "5e3",
+          "incGrp": "5e3_a"
+        }
+      ]
+    },
+    "5e4": {
+      "label": "5E 4-Cylinder",
+      "icon": "\ud83d\ude9c",
+      "note": "Prices AT COST \u2014 update before quoting",
+      "atCost": true,
+      "list": [
+        {
+          "id": "5090e-oos",
+          "label": "5090E OOS 12/12 PR",
+          "price": 60100,
+          "hp": 90,
+          "incCat": "5e4",
+          "incGrp": "5e4_a"
+        },
+        {
+          "id": "5090e-std",
+          "label": "5090E Std CAB 12/12",
+          "price": 71200,
+          "hp": 90,
+          "incCat": "5e4",
+          "incGrp": "5e4_a"
+        },
+        {
+          "id": "5090e-prem",
+          "label": "5090E Prem CAB 12/12",
+          "price": 73900,
+          "hp": 90,
+          "incCat": "5e4",
+          "incGrp": "5e4_a"
+        },
+        {
+          "id": "5100e-oos",
+          "label": "5100E OOS 12/12 PR",
+          "price": 62400,
+          "hp": 100,
+          "incCat": "5e4",
+          "incGrp": "5e4_a"
+        },
+        {
+          "id": "5100e-std",
+          "label": "5100E Std CAB 12/12",
+          "price": 73500,
+          "hp": 100,
+          "incCat": "5e4",
+          "incGrp": "5e4_a"
+        },
+        {
+          "id": "5100e-prem",
+          "label": "5100E Prem CAB 12/12",
+          "price": 76200,
+          "hp": 100,
+          "incCat": "5e4",
+          "incGrp": "5e4_a"
+        }
+      ]
+    },
+    "comm": {
+      "label": "Commercial Mowing",
+      "icon": "\ud83c\udf3f",
+      "note": "Prices at 10% margin \u2014 DGB/JDF not included",
+      "atCost": false,
+      "list": [
+        {
+          "id": "z920m-48",
+          "label": "Z920M 48\"",
+          "price": 12450,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z920m-54",
+          "label": "Z920M 54\"",
+          "price": 12770,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z920m-60",
+          "label": "Z920M 60\"",
+          "price": 13170,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z930m-54",
+          "label": "Z930M 54\"",
+          "price": 13125,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z930m-60",
+          "label": "Z930M 60\"",
+          "price": 13525,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z950m-60",
+          "label": "Z950M 60\"",
+          "price": 14000,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z950m-72",
+          "label": "Z950M 72\"",
+          "price": 14750,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z955m-54",
+          "label": "Z955M EFI 54\"",
+          "price": 15000,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z955m-60",
+          "label": "Z955M EFI 60\"",
+          "price": 15400,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z960m-60",
+          "label": "Z960M 60\"",
+          "price": 14800,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z960m-72",
+          "label": "Z960M 72\"",
+          "price": 15550,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z965m-60",
+          "label": "Z965M EFI 60\"",
+          "price": 16700,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z965m-72",
+          "label": "Z965M EFI 72\"",
+          "price": 17450,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z975m-60",
+          "label": "Z975M EFI 60\"",
+          "price": 15800,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z975m-72",
+          "label": "Z975M EFI 72\"",
+          "price": 16550,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z950r-54",
+          "label": "Z950R 54\"",
+          "price": 15900,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z950r-60",
+          "label": "Z950R 60\"",
+          "price": 16300,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z950r-72",
+          "label": "Z950R 72\"",
+          "price": 17150,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z955r-60",
+          "label": "Z955R EFI 60\"",
+          "price": 17500,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z965r-60",
+          "label": "Z965R EFI 60\"",
+          "price": 19000,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z965r-72",
+          "label": "Z965R EFI 72\"",
+          "price": 19750,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z970r-60",
+          "label": "Z970R 60\"",
+          "price": 17750,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z970r-72",
+          "label": "Z970R 72\"",
+          "price": 18500,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z985r-72",
+          "label": "Z985R EFI 72\"",
+          "price": 20900,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z994r-60",
+          "label": "Z994R 60\" Diesel",
+          "price": 19400,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z994r-72",
+          "label": "Z994R 72\" Diesel",
+          "price": 20150,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z997r-60",
+          "label": "Z997R 60\" Diesel",
+          "price": 26000,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "z997r-72",
+          "label": "Z997R 72\" Diesel",
+          "price": 26750,
+          "incCat": "comm",
+          "incGrp": "cm_b"
+        },
+        {
+          "id": "q810e",
+          "label": "Q810E 36\"",
+          "price": 10550,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q820e",
+          "label": "Q820E 36\"",
+          "price": 11500,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q820m",
+          "label": "Q820M 48\"",
+          "price": 11625,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q820m-54",
+          "label": "Q820M 54\"",
+          "price": 11925,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q820m-60",
+          "label": "Q820M 60\"",
+          "price": 12225,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q850m-54",
+          "label": "Q850M 54\"",
+          "price": 12425,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q850m-60",
+          "label": "Q850M 60\"",
+          "price": 12725,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q850r-54",
+          "label": "Q850R 54\"",
+          "price": 13100,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q850r-60",
+          "label": "Q850R 60\"",
+          "price": 13400,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q865r-60",
+          "label": "Q865R EFI 60\"",
+          "price": 14500,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "q865r-72",
+          "label": "Q865R EFI 72\"",
+          "price": 15100,
+          "incCat": "comm",
+          "incGrp": "cm_a"
+        },
+        {
+          "id": "z720e-48",
+          "label": "Z720E 48\"",
+          "price": 8279,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z720e-54",
+          "label": "Z720E 54\"",
+          "price": 8609,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z720e-60",
+          "label": "Z720E 60\"",
+          "price": 8939,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z735e-60",
+          "label": "Z735E 60\"",
+          "price": 9119,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z730m-54",
+          "label": "Z730M 54\"",
+          "price": 9929,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z730m-60",
+          "label": "Z730M 60\"",
+          "price": 10259,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z735m-48",
+          "label": "Z735M 48\"",
+          "price": 9559,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z735m-54",
+          "label": "Z735M 54\"",
+          "price": 9889,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z735m-60",
+          "label": "Z735M 60\"",
+          "price": 10219,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z740r-48",
+          "label": "Z740R 48\"",
+          "price": 10719,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z740r-54",
+          "label": "Z740R 54\"",
+          "price": 11049,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z740r-60",
+          "label": "Z740R 60\"",
+          "price": 11379,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z760r-54",
+          "label": "Z760R 54\"",
+          "price": 11479,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        },
+        {
+          "id": "z760r-60",
+          "label": "Z760R 60\"",
+          "price": 11809,
+          "incCat": "comm",
+          "incGrp": "cm_c"
+        }
+      ]
+    },
+    "riding": {
+      "label": "Residential Mowing",
+      "icon": "\ud83c\udfe1",
+      "note": "",
+      "atCost": false,
+      "list": [
+        {
+          "id": "s100-42",
+          "label": "S100 42\"",
+          "price": 2499,
+          "incCat": "riding",
+          "incGrp": "rl_a"
+        },
+        {
+          "id": "s110-42",
+          "label": "S110 42\"",
+          "price": 2599,
+          "incCat": "riding",
+          "incGrp": "rl_a"
+        },
+        {
+          "id": "s120-42",
+          "label": "S120 42\"",
+          "price": 2899,
+          "incCat": "riding",
+          "incGrp": "rl_a"
+        },
+        {
+          "id": "s130-42",
+          "label": "S130 42\"",
+          "price": 2999,
+          "incCat": "riding",
+          "incGrp": "rl_a"
+        },
+        {
+          "id": "s140-48",
+          "label": "S140 48\"",
+          "price": 2999,
+          "incCat": "riding",
+          "incGrp": "rl_a"
+        },
+        {
+          "id": "s160-48",
+          "label": "S160 48\"",
+          "price": 3299,
+          "incCat": "riding",
+          "incGrp": "rl_a"
+        },
+        {
+          "id": "s170-48",
+          "label": "S170 48\"",
+          "price": 3399,
+          "incCat": "riding",
+          "incGrp": "rl_a"
+        },
+        {
+          "id": "s180-54",
+          "label": "S180 54\"",
+          "price": 3699,
+          "incCat": "riding",
+          "incGrp": "rl_a"
+        },
+        {
+          "id": "s220-42",
+          "label": "S220 42\"",
+          "price": 3099,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "s240-42",
+          "label": "S240 42\"",
+          "price": 3699,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "s240-48",
+          "label": "S240 48\"",
+          "price": 3999,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x330-42",
+          "label": "X330 42\"",
+          "price": 3999,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x330-48",
+          "label": "X330 48\"",
+          "price": 4599,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x350-42",
+          "label": "X350 42\"",
+          "price": 4099,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x350-48",
+          "label": "X350 48\"",
+          "price": 4699,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x354-42",
+          "label": "X354 42\"",
+          "price": 5099,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x370-42",
+          "label": "X370 42\"",
+          "price": 5199,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x380-48",
+          "label": "X380 48\"",
+          "price": 5799,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x380-54",
+          "label": "X380 54\"",
+          "price": 6099,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x384-48",
+          "label": "X384 48\"",
+          "price": 6799,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x390-48",
+          "label": "X390 48\"",
+          "price": 6999,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x390-54",
+          "label": "X390 54\"",
+          "price": 7299,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x394-48",
+          "label": "X394 48\"",
+          "price": 7799,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x570-48",
+          "label": "X570 48\"",
+          "price": 8199,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x570-54",
+          "label": "X570 54\"",
+          "price": 8499,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x580-54",
+          "label": "X580 54\"",
+          "price": 9499,
+          "incCat": "riding",
+          "incGrp": "rl_d"
+        },
+        {
+          "id": "x590-54",
+          "label": "X590 54\"",
+          "price": 10399,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "x730",
+          "label": "X730 No Deck",
+          "price": 12589,
+          "incCat": "riding",
+          "incGrp": "rl_f"
+        },
+        {
+          "id": "x734",
+          "label": "X734 No Deck",
+          "price": 13799,
+          "incCat": "riding",
+          "incGrp": "rl_f"
+        },
+        {
+          "id": "x738",
+          "label": "X738 No Deck",
+          "price": 14209,
+          "incCat": "riding",
+          "incGrp": "rl_f"
+        },
+        {
+          "id": "x739",
+          "label": "X739 No Deck",
+          "price": 15069,
+          "incCat": "riding",
+          "incGrp": "rl_f"
+        },
+        {
+          "id": "x750",
+          "label": "X750 Diesel No Deck",
+          "price": 13809,
+          "incCat": "riding",
+          "incGrp": "rl_f"
+        },
+        {
+          "id": "x754",
+          "label": "X754 Diesel No Deck",
+          "price": 15019,
+          "incCat": "riding",
+          "incGrp": "rl_f"
+        },
+        {
+          "id": "z315e-42",
+          "label": "Z315E 42\"",
+          "price": 3399,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z325e-48",
+          "label": "Z325E 48\"",
+          "price": 3799,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z325e-54",
+          "label": "Z325E 54\"",
+          "price": 3899,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z320m-42",
+          "label": "Z320M 42\"",
+          "price": 3599,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z330m-48",
+          "label": "Z330M 48\"",
+          "price": 3899,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z330m-54",
+          "label": "Z330M 54\"",
+          "price": 3999,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z320r-42",
+          "label": "Z320R 42\"",
+          "price": 3799,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z330r-48",
+          "label": "Z330R 48\"",
+          "price": 4099,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z330r-54",
+          "label": "Z330R 54\"",
+          "price": 4199,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z370r-42",
+          "label": "Z370R 42\" EV",
+          "price": 6499,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z370r-48",
+          "label": "Z370R 48\" EV",
+          "price": 6999,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z380r-54",
+          "label": "Z380R 54\" EV",
+          "price": 8999,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z370rs",
+          "label": "Z370RS",
+          "price": 0,
+          "incCat": "riding",
+          "incGrp": "rl_e"
+        },
+        {
+          "id": "z515e-48",
+          "label": "Z515E 48\"",
+          "price": 5299,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z515e-54",
+          "label": "Z515E 54\"",
+          "price": 5499,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z515e-60",
+          "label": "Z515E 60\"",
+          "price": 5799,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z530m-48",
+          "label": "Z530M 48\"",
+          "price": 5899,
+          "incCat": "riding",
+          "incGrp": "rl_c"
+        },
+        {
+          "id": "z530m-54",
+          "label": "Z530M 54\"",
+          "price": 6099,
+          "incCat": "riding",
+          "incGrp": "rl_c"
+        },
+        {
+          "id": "z530m-60",
+          "label": "Z530M 60\"",
+          "price": 6399,
+          "incCat": "riding",
+          "incGrp": "rl_c"
+        },
+        {
+          "id": "z530r-54",
+          "label": "Z530R 54\"",
+          "price": 6599,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z530r-60",
+          "label": "Z530R 60\"",
+          "price": 6899,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z545r-48",
+          "label": "Z545R 48\"",
+          "price": 6999,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z545r-54",
+          "label": "Z545R 54\"",
+          "price": 7199,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        },
+        {
+          "id": "z545r-60",
+          "label": "Z545R 60\"",
+          "price": 7499,
+          "incCat": "riding",
+          "incGrp": "rl_b"
+        }
+      ]
+    },
+    "sxs": {
+      "label": "Side by Sides",
+      "icon": "\ud83d\udefb",
+      "note": "Price reference only \u2014 No JDF incentives",
+      "atCost": false,
+      "noInc": true,
+      "list": [
+        {
+          "id": "tx-4x2",
+          "label": "TX 4X2",
+          "price": 11500,
+          "eng": "15.5 Kawasaki"
+        },
+        {
+          "id": "te-elec",
+          "label": "TE Electric",
+          "price": 14500,
+          "eng": "48V Electric"
+        },
+        {
+          "id": "th-6x4-gas",
+          "label": "TH 6X4 Gas",
+          "price": 13500,
+          "eng": "15.5 Kawasaki"
+        },
+        {
+          "id": "th-6x4-dsl",
+          "label": "TH 6X4 Diesel",
+          "price": 16500,
+          "eng": "18.2 Diesel"
+        },
+        {
+          "id": "hpx-615e",
+          "label": "HPX 615E",
+          "price": 16000,
+          "eng": "20 Kawasaki"
+        },
+        {
+          "id": "hpx-815e",
+          "label": "HPX 815E",
+          "price": 17600,
+          "eng": "18.2 Diesel"
+        },
+        {
+          "id": "xuv-560e",
+          "label": "XUV 560E",
+          "price": 13800,
+          "eng": "16 Kawasaki"
+        },
+        {
+          "id": "xuv-560e-s4",
+          "label": "XUV 560E S4",
+          "price": 15700,
+          "eng": "16 Kawasaki"
+        },
+        {
+          "id": "xuv-590m",
+          "label": "XUV 590M",
+          "price": 17250,
+          "eng": "32 Kawasaki"
+        },
+        {
+          "id": "xuv-590m-s4",
+          "label": "XUV 590M S4",
+          "price": 18700,
+          "eng": "32 Kawasaki"
+        },
+        {
+          "id": "xuv-845e",
+          "label": "XUV 845E",
+          "price": 18700,
+          "eng": "53 HP"
+        },
+        {
+          "id": "xuv-845m",
+          "label": "XUV 845M",
+          "price": 20600,
+          "eng": "53 HP"
+        },
+        {
+          "id": "xuv-845m-hvac",
+          "label": "XUV 845M HVAC",
+          "price": 29700,
+          "eng": "53 HP"
+        },
+        {
+          "id": "xuv-845r",
+          "label": "XUV 845R",
+          "price": 34250,
+          "eng": "53 HP"
+        },
+        {
+          "id": "xuv-845r-sig",
+          "label": "XUV 845R Signature",
+          "price": 40300,
+          "eng": "53 HP"
+        },
+        {
+          "id": "xuv-875m",
+          "label": "XUV 875M",
+          "price": 22600,
+          "eng": "22.8 Diesel"
+        },
+        {
+          "id": "xuv-875m-hvac",
+          "label": "XUV 875M HVAC",
+          "price": 31600,
+          "eng": "22.8 Diesel"
+        },
+        {
+          "id": "xuv-875r",
+          "label": "XUV 875R",
+          "price": 36150,
+          "eng": "22.8 Diesel"
+        },
+        {
+          "id": "xuv-875r-sig",
+          "label": "XUV 875R Signature",
+          "price": 42200,
+          "eng": "22.8 Diesel"
+        },
+        {
+          "id": "xuv-825m-s4",
+          "label": "XUV 825M S4",
+          "price": 21600,
+          "eng": "50 HP"
+        },
+        {
+          "id": "xuv-855m-s4",
+          "label": "XUV 855M S4 2026",
+          "price": 23300,
+          "eng": "22.8 Diesel"
+        }
+      ]
+    }
+  },
+  "content": {
+    "houseRules": [
+      {
+        "title": "0% / 72 Months (under 100HP)",
+        "body": "Auto-approved. Offer first on every CUT and 5E 3-Cyl deal. Use 84M to close if needed \u2014 also auto-approved. (5E 4-Cyl leads at 0%/60M instead \u2014 see its own Reference row.)"
+      },
+      {
+        "title": "PowerGard \u2014 Mandatory on Every Deal",
+        "body": "Neal Conderey will call to find out why it was not sold. Document if customer declines."
+      },
+      {
+        "title": "Equipment Mobile / OPP Center \u2014 Required at Delivery",
+        "body": "5000 Series+: OPP Center account. Below 5000 Series: Equipment Mobile / Operations Center."
+      },
+      {
+        "title": "Commercial Mowing Target: 302 Units",
+        "body": "Cannot miss deals. Directly impacts tractor market share allocation."
+      },
+      {
+        "title": "DGB-SASA Discount Authority",
+        "body": "CUT/Small Ag: 2% standard / 5% aged \u00b7 Comm Mowers: 3% / 5% aged \u00b7 Above limit: See KF \u2014 no exceptions."
+      }
+    ],
+    "checklist": [
+      {
+        "text": "Offer PowerGard Extended Coverage",
+        "warn": "Neal Conderey will call to find out why it was not sold. Document if customer declines."
+      },
+      {
+        "text": "Verify customer is NOT on Government Direct / SABD / Special Discount",
+        "warn": "These programs cancel the JD incentive \u2014 cannot stack."
+      },
+      {
+        "text": "Confirm expiration date and submit paperwork on time",
+        "warn": ""
+      }
+    ],
+    "financeText": {
+      "leadLabel": "Lead Offer \u2014 Auto-Approved \u2014 No Call Needed",
+      "leadSub": "John Deere Financial \u00b7 No Money Down",
+      "leadAuth": "AUTO-APPROVED \u00b7 FULL AUTHORITY",
+      "backupText": "0% for 84 Months \u2014 Also Auto-Approved",
+      "backupNote": "Offer 72 first. Use 84 to close. You have the authority.",
+      "over100Note": "Published options under 2.5% dealer participation are auto-approved. Over 2.5%? See KF \u2014 do not commit without approval."
+    }
+  },
+  "settings": {
+    "appTitle": "Goldman Equipment",
+    "appSub": "John Deere \u2014 Sales Tool",
+    "colorPrimary": "#367C2B",
+    "colorAccent": "#FFDE00",
+    "fontSize": "15px",
+    "storePhone": "",
+    "storeWeb": ""
+  },
+  "bulletins": [
+    {
+      "id": "bul1",
+      "num": "A252-26U",
+      "title": "CUT Sub-Compact / 3E-3D (1023E-3038E)",
+      "date": "Nov 1, 2026",
+      "note": "Lead: 0%/48M std. 0%/72M via SPP (4% participation). Cash bonus: 1023E $1K, 1025R $2.75K, 2025R $3.5K, 3D $1.75K, 3E $2.75K. Impl bonus up to $400."
+    },
+    {
+      "id": "bul2",
+      "num": "A193-26U",
+      "title": "CUT 3R / 4R Series (3033R-4075R)",
+      "date": "Aug 4, 2026",
+      "note": "Lead: 0%/36M or 0%/48M std. 0%/72M via SPP. Cash: 3033R $2.5K, 3039R $3K, 3046R $2.5K, 4044R/4052R $3K, 4066R/4075R $4K."
+    },
+    {
+      "id": "bul3",
+      "num": "A253-26U",
+      "title": "CUT 4M Series (4044M-4066M HD)",
+      "date": "Nov 1, 2026",
+      "note": "Lead: 0%/48M std. Finance/Cash table: 4044M $1.5K/$4K, 4052M $2.5K/$4.5K, 4066M $2.5K/$5K, HD $2.5K/$5.5K, 4044M LMPP $2.1K/$4K."
+    },
+    {
+      "id": "bul4",
+      "num": "A174-26U",
+      "title": "CUT 1E 23 / 1M 25 / 1R 25",
+      "date": "Aug 4, 2026",
+      "note": "Lead: 0%/36M std. Alt: 1.5%/48M, 2.5%/60M, 2.9%/72M, 3.5%/84M. Cash: 1E23 $1K, 1M25 $750, 1R25 $1K. 1E23 LMPP: $300 financing bonus + $1K cash."
+    },
+    {
+      "id": "bul5",
+      "num": "A251-26U",
+      "title": "5E 3-Cylinder (5045E-5075E)",
+      "date": "Nov 1, 2026",
+      "note": "Lead: 0%/60M std. 0%/72M via 2.5% SPP. Cash: OOS $4K, CAB $3K (MY26 & prior). Risk Share $3K (2016+ competitive 35-85HP trade)."
+    },
+    {
+      "id": "bul6",
+      "num": "A206-26U",
+      "title": "5E 4-Cylinder (5090E-5100E)",
+      "date": "Aug 4, 2026",
+      "note": "Lead: 0%/60M std. 0%/72M via 2.5% SPP. Cash $3K. Risk Share $3K (2016+ competitive 50-120HP trade)."
+    },
+    {
+      "id": "bul7",
+      "num": "COMM1-26U",
+      "title": "Commercial Mowing Programs",
+      "date": "Aug 2026",
+      "note": "Lead: 1.9%/36M revolving. Alt: 2.9-4.9%/48-72M. Settlement bonus stacks on top."
+    },
+    {
+      "id": "bul8",
+      "num": "RES1-26U",
+      "title": "Residential Programs",
+      "date": "Aug 2026",
+      "note": "No Interest 9M. 0%/36M (Z300/Z500). 0%/48M (X700/Z370RS). 4.9%/60M."
+    }
+  ],
+  "attachments": [
+    {
+      "id": "rc2048",
+      "cat": "Rotary Cutter",
+      "brand": "Frontier",
+      "model": "RC2048",
+      "desc": "4'",
+      "price": 2395,
+      "bonus": true
+    },
+    {
+      "id": "rc2060",
+      "cat": "Rotary Cutter",
+      "brand": "Frontier",
+      "model": "RC2060",
+      "desc": "5'",
+      "price": 2778,
+      "bonus": true
+    },
+    {
+      "id": "rc2072",
+      "cat": "Rotary Cutter",
+      "brand": "Frontier",
+      "model": "RC2072",
+      "desc": "6'",
+      "price": 3253,
+      "bonus": true
+    },
+    {
+      "id": "bb2048",
+      "cat": "Box Blade",
+      "brand": "Frontier",
+      "model": "BB2048",
+      "desc": "4'",
+      "price": 1347,
+      "bonus": true
+    },
+    {
+      "id": "bb2065",
+      "cat": "Box Blade",
+      "brand": "Frontier",
+      "model": "BB2065",
+      "desc": "5'4\"",
+      "price": 1601,
+      "bonus": true
+    },
+    {
+      "id": "bb2172",
+      "cat": "Box Blade",
+      "brand": "Frontier",
+      "model": "BB2172",
+      "desc": "6'",
+      "price": 2202,
+      "bonus": true
+    },
+    {
+      "id": "bb2184",
+      "cat": "Box Blade",
+      "brand": "Frontier",
+      "model": "BB2184",
+      "desc": "7'",
+      "price": 2354,
+      "bonus": true
+    },
+    {
+      "id": "ab12g",
+      "cat": "Bale Spear",
+      "brand": "Frontier",
+      "model": "AB12G",
+      "desc": "Global",
+      "price": 1076,
+      "bonus": true
+    },
+    {
+      "id": "ab12e",
+      "cat": "Bale Spear",
+      "brand": "Frontier",
+      "model": "AB12E",
+      "desc": "JD 4/5",
+      "price": 945,
+      "bonus": true
+    },
+    {
+      "id": "ap12g",
+      "cat": "Pallet Forks",
+      "brand": "Frontier",
+      "model": "AP12G",
+      "desc": "Global",
+      "price": 1505,
+      "bonus": true
+    },
+    {
+      "id": "ap12f",
+      "cat": "Pallet Forks",
+      "brand": "Frontier",
+      "model": "AP12F",
+      "desc": "JD 4/5",
+      "price": 1262,
+      "bonus": true
+    },
+    {
+      "id": "lr2060l",
+      "cat": "Landscape Rake",
+      "brand": "Frontier",
+      "model": "LR2060L",
+      "desc": "5'",
+      "price": 1057,
+      "bonus": true
+    },
+    {
+      "id": "lr2172",
+      "cat": "Landscape Rake",
+      "brand": "Frontier",
+      "model": "LR2172",
+      "desc": "6'",
+      "price": 1682,
+      "bonus": true
+    },
+    {
+      "id": "lr2184",
+      "cat": "Landscape Rake",
+      "brand": "Frontier",
+      "model": "LR2184",
+      "desc": "7'",
+      "price": 1794,
+      "bonus": true
+    },
+    {
+      "id": "lr2196",
+      "cat": "Landscape Rake",
+      "brand": "Frontier",
+      "model": "LR2196",
+      "desc": "8'",
+      "price": 1953,
+      "bonus": true
+    },
+    {
+      "id": "rt3049",
+      "cat": "Rotary Tiller",
+      "brand": "Frontier",
+      "model": "RT3049",
+      "desc": "4'",
+      "price": 2953,
+      "bonus": true
+    },
+    {
+      "id": "rt1265",
+      "cat": "Rotary Tiller",
+      "brand": "Frontier",
+      "model": "RT1265",
+      "desc": "Medium",
+      "price": 5571,
+      "bonus": true
+    },
+    {
+      "id": "rt1273",
+      "cat": "Rotary Tiller",
+      "brand": "Frontier",
+      "model": "RT1273",
+      "desc": "Large",
+      "price": 8955,
+      "bonus": true
+    },
+    {
+      "id": "gm4060e",
+      "cat": "Grooming Mower",
+      "brand": "Frontier",
+      "model": "GM4060E",
+      "desc": "60\" Light",
+      "price": 4006,
+      "bonus": true
+    },
+    {
+      "id": "gm4072e",
+      "cat": "Grooming Mower",
+      "brand": "Frontier",
+      "model": "GM4072E",
+      "desc": "72\" Light",
+      "price": 4318,
+      "bonus": true
+    },
+    {
+      "id": "gm2060r",
+      "cat": "Grooming Mower",
+      "brand": "Frontier",
+      "model": "GM2060R",
+      "desc": "60\" Rear",
+      "price": 5083,
+      "bonus": true
+    },
+    {
+      "id": "gm2072r",
+      "cat": "Grooming Mower",
+      "brand": "Frontier",
+      "model": "GM2072R",
+      "desc": "72\" Rear",
+      "price": 5492,
+      "bonus": true
+    },
+    {
+      "id": "gm2084r",
+      "cat": "Grooming Mower",
+      "brand": "Frontier",
+      "model": "GM2084R",
+      "desc": "84\" Rear",
+      "price": 6240,
+      "bonus": true
+    },
+    {
+      "id": "lp2054l",
+      "cat": "Land Plane",
+      "brand": "Frontier",
+      "model": "LP2054L",
+      "desc": "4.5' Light",
+      "price": 1592,
+      "bonus": true
+    },
+    {
+      "id": "lp2160",
+      "cat": "Land Plane",
+      "brand": "Frontier",
+      "model": "LP2160",
+      "desc": "5'",
+      "price": 1985,
+      "bonus": true
+    },
+    {
+      "id": "lp2172",
+      "cat": "Land Plane",
+      "brand": "Frontier",
+      "model": "LP2172",
+      "desc": "6'",
+      "price": 2240,
+      "bonus": true
+    },
+    {
+      "id": "lp2184",
+      "cat": "Land Plane",
+      "brand": "Frontier",
+      "model": "LP2184",
+      "desc": "7'",
+      "price": 2961,
+      "bonus": true
+    },
+    {
+      "id": "lp2196",
+      "cat": "Land Plane",
+      "brand": "Frontier",
+      "model": "LP2196",
+      "desc": "8'",
+      "price": 3317,
+      "bonus": true
+    },
+    {
+      "id": "rc5m",
+      "cat": "JD Rotary Cutter",
+      "brand": "John Deere",
+      "model": "RC5M",
+      "desc": "5' Lift",
+      "price": 4700,
+      "bonus": true
+    },
+    {
+      "id": "rc6m",
+      "cat": "JD Rotary Cutter",
+      "brand": "John Deere",
+      "model": "RC6M",
+      "desc": "6' Lift",
+      "price": 5582,
+      "bonus": true
+    },
+    {
+      "id": "rc7m",
+      "cat": "JD Rotary Cutter",
+      "brand": "John Deere",
+      "model": "RC7M",
+      "desc": "7' Lift",
+      "price": 7188,
+      "bonus": true
+    },
+    {
+      "id": "rc8m-lt",
+      "cat": "JD Rotary Cutter",
+      "brand": "John Deere",
+      "model": "RC8M",
+      "desc": "8' Lift",
+      "price": 11347,
+      "bonus": true
+    },
+    {
+      "id": "rc10m-lt",
+      "cat": "JD Rotary Cutter",
+      "brand": "John Deere",
+      "model": "RC10M",
+      "desc": "10' Lift",
+      "price": 14124,
+      "bonus": true
+    },
+    {
+      "id": "rc8m-pt",
+      "cat": "JD Rotary Cutter",
+      "brand": "John Deere",
+      "model": "RC8M",
+      "desc": "8' Pull",
+      "price": 14189,
+      "bonus": true
+    },
+    {
+      "id": "rc10m-pt",
+      "cat": "JD Rotary Cutter",
+      "brand": "John Deere",
+      "model": "RC10M",
+      "desc": "10' Pull",
+      "price": 16330,
+      "bonus": true
+    },
+    {
+      "id": "dbglt5",
+      "cat": "Grader Blade",
+      "brand": "Armstrong Ag",
+      "model": "DBGLT5",
+      "desc": "5' Light",
+      "price": 1364,
+      "bonus": false
+    },
+    {
+      "id": "dbglt6",
+      "cat": "Grader Blade",
+      "brand": "Armstrong Ag",
+      "model": "DBGLT6",
+      "desc": "6' Light",
+      "price": 1501,
+      "bonus": false
+    },
+    {
+      "id": "dbg5",
+      "cat": "Grader Blade",
+      "brand": "Armstrong Ag",
+      "model": "DBG5",
+      "desc": "5'",
+      "price": 2143,
+      "bonus": false
+    },
+    {
+      "id": "dbg6",
+      "cat": "Grader Blade",
+      "brand": "Armstrong Ag",
+      "model": "DBG6",
+      "desc": "6'",
+      "price": 2291,
+      "bonus": false
+    },
+    {
+      "id": "dbg7",
+      "cat": "Grader Blade",
+      "brand": "Armstrong Ag",
+      "model": "DBG7",
+      "desc": "7'",
+      "price": 2476,
+      "bonus": false
+    },
+    {
+      "id": "dbg8",
+      "cat": "Grader Blade",
+      "brand": "Armstrong Ag",
+      "model": "DBG8",
+      "desc": "8'",
+      "price": 2586,
+      "bonus": false
+    },
+    {
+      "id": "md1216",
+      "cat": "Disc Harrow",
+      "brand": "Armstrong Ag",
+      "model": "MD1216",
+      "desc": "12x16\"",
+      "price": 1850,
+      "bonus": false
+    },
+    {
+      "id": "md1616",
+      "cat": "Disc Harrow",
+      "brand": "Armstrong Ag",
+      "model": "MD1616",
+      "desc": "16x16\" Med",
+      "price": 2072,
+      "bonus": false
+    },
+    {
+      "id": "md1618",
+      "cat": "Disc Harrow",
+      "brand": "Armstrong Ag",
+      "model": "MD1618",
+      "desc": "16x18\" Med",
+      "price": 2294,
+      "bonus": false
+    },
+    {
+      "id": "md2018",
+      "cat": "Disc Harrow",
+      "brand": "Armstrong Ag",
+      "model": "MD2018",
+      "desc": "20x18\"",
+      "price": 2664,
+      "bonus": false
+    },
+    {
+      "id": "hd1618",
+      "cat": "Disc Harrow",
+      "brand": "Armstrong Ag",
+      "model": "HD1618",
+      "desc": "16x18\" Heavy",
+      "price": 3256,
+      "bonus": false
+    },
+    {
+      "id": "hd2020",
+      "cat": "Disc Harrow",
+      "brand": "Armstrong Ag",
+      "model": "HD2020",
+      "desc": "20x20\" Heavy",
+      "price": 4575,
+      "bonus": false
+    },
+    {
+      "id": "hd2420",
+      "cat": "Disc Harrow",
+      "brand": "Armstrong Ag",
+      "model": "HD2420",
+      "desc": "24x20\"",
+      "price": 5003,
+      "bonus": false
+    },
+    {
+      "id": "hd2820",
+      "cat": "Disc Harrow",
+      "brand": "Armstrong Ag",
+      "model": "HD2820",
+      "desc": "28x20\"",
+      "price": 5392,
+      "bonus": false
+    },
+    {
+      "id": "bgrmini",
+      "cat": "Brush Grapple",
+      "brand": "Armstrong Ag",
+      "model": "BGRMINI",
+      "desc": "Mini JD/Skid",
+      "price": 2099,
+      "bonus": false
+    },
+    {
+      "id": "bgr64-5",
+      "cat": "Brush Grapple",
+      "brand": "Armstrong Ag",
+      "model": "BGR 64-5",
+      "desc": "64\" Euro/Skid",
+      "price": 2891,
+      "bonus": false
+    },
+    {
+      "id": "bgr64-9",
+      "cat": "Brush Grapple",
+      "brand": "Armstrong Ag",
+      "model": "BGR 64-9",
+      "desc": "64\" Heavy",
+      "price": 4033,
+      "bonus": false
+    },
+    {
+      "id": "bgr72-6",
+      "cat": "Brush Grapple",
+      "brand": "Armstrong Ag",
+      "model": "BGR 72-6",
+      "desc": "72\" Euro/Skid",
+      "price": 3480,
+      "bonus": false
+    },
+    {
+      "id": "bgr72-11",
+      "cat": "Brush Grapple",
+      "brand": "Armstrong Ag",
+      "model": "BGR 72-11",
+      "desc": "72\" Heavy",
+      "price": 4449,
+      "bonus": false
+    },
+    {
+      "id": "ls3",
+      "cat": "Lane Shark",
+      "brand": "Lane Shark",
+      "model": "LS3",
+      "desc": "5\u20138.5 GPM",
+      "price": 4900,
+      "bonus": false
+    },
+    {
+      "id": "ls4",
+      "cat": "Lane Shark",
+      "brand": "Lane Shark",
+      "model": "LS4",
+      "desc": "8.5\u201320 GPM",
+      "price": 5100,
+      "bonus": false
+    },
+    {
+      "id": "hammerhead",
+      "cat": "Lane Shark",
+      "brand": "Lane Shark",
+      "model": "Hammerhead",
+      "desc": "Fully Auto",
+      "price": 9990,
+      "bonus": false
+    }
+  ],
+  "catDisplay": [
+    {
+      "key": "cut",
+      "icon": "\ud83d\ude9c",
+      "name": "CUT 1-4",
+      "desc": "1025R-4075R",
+      "image": null
+    },
+    {
+      "key": "5e3",
+      "icon": "\ud83d\ude9c",
+      "name": "5E 3-Cyl",
+      "desc": "5050E-5075E",
+      "image": null
+    },
+    {
+      "key": "5e4",
+      "icon": "\ud83d\ude9c",
+      "name": "5E 4-Cyl",
+      "desc": "5090E-5100E",
+      "image": null
+    },
+    {
+      "key": "comm",
+      "icon": "\ud83c\udf3f",
+      "name": "Comm Mowing",
+      "desc": "Z900 / QuikTrak",
+      "image": null
+    },
+    {
+      "key": "riding",
+      "icon": "\ud83c\udfe1",
+      "name": "Residential",
+      "desc": "S / X / Z Series",
+      "image": null
+    },
+    {
+      "key": "sxs",
+      "icon": "\ud83d\udefb",
+      "name": "Side by Sides",
+      "desc": "Gators / XUV",
+      "image": null
+    }
+  ],
+  "published": 1788047475182,
+  "pushPins": false
+}
