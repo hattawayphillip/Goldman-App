@@ -339,7 +339,19 @@ function series(k,label){
 }
 const SORDER={cut:['1 Series','2 Series','3E / 3D Series','3R Series','4M Series','4R Series'],'5e3':['Open station','Cab models'],'5e4':['Open station','Cab models'],comm:['Z900 Series','Z700 Series','QuikTrak'],riding:['S100 Series','S200 Series','X300 Series','X500 Series','X700 Series','Z300 Series','Z500 Series']};
 const FIN={zero72:'0% · 72 mo',zero60:'0% · 60 mo',commMow:'1.9% · 36 mo',ridingLawn:'0% · 36 mo',over100hp:'Finance · see KF'};
-function finTag(m){ const c=m.incCat?getCat(m.incCat):null; return c&&FIN[c.finType]||''; }
+function finDefault(cat){
+  const A=(l,rate,months,t)=>({l,rate,months,t:t||''});
+  if(cat.finType==='zero72') return [A('Lead offer',0,72,'AUTO-APPROVED'),A('Backup to close',0,84,'AUTO-APPROVED')];
+  if(cat.finType==='zero60') return [A('Lead offer',0,60,'AUTO-APPROVED'),A('Backup to close',0,72,'SPP — SEE KF')];
+  if(cat.finType==='commMow') return [A('Lead (revolving)',1.9,36),A('Alternate',4.9,72)];
+  if(cat.finType==='ridingLawn') return [A('Option 1',0,36),A('Option 2',4.9,60)];
+  return [];
+}
+function finTag(m){
+  const c=m.incCat?getCat(m.incCat):null; if(!c) return '';
+  if(Array.isArray(c.finOpts)){ const o=c.finOpts[0]; return o?(o.rate+'% · '+o.months+' mo'):'Finance · see KF'; }
+  return FIN[c.finType]||'';
+}
 const tractor=k=>k==='cut'||k==='5e3'||k==='5e4';
 const byLabel=(a,b)=>a.m.label.localeCompare(b.m.label,undefined,{numeric:true});
 function spec(m){ const p=[]; if(m.hp) p.push(m.hp+' HP'); if(m.eng) p.push(m.eng); return p.join(' · '); }
@@ -509,6 +521,10 @@ function drawerHtml(){
     h+=`<div class="blk"><h4>Incentives</h4><div class="note-box">Price reference only — no JD Financial incentive on Gators and XUVs. Standard JDF rates apply. Confirm terms with KF.</div></div>`;
   }
 
+  /* discount authority */
+  { const dc=m.incCat?getCat(m.incCat):null; if(!mc.noInc&&dc&&dc.dgbStd!=null&&dc.dgbStd!==''){
+    h+=`<div class="blk"><h4>Discount authority</h4><div class="row"><div class="grow"><div class="lbl">Standard (fresh stock)</div></div><div class="amt">${esc(dc.dgbStd)}% auto-approved</div></div>${dc.dgbAged!=null&&dc.dgbAged!==''?`<div class="row"><div class="grow"><div class="lbl">Aged 365+ days</div></div><div class="amt">${esc(dc.dgbAged)}% auto-approved</div></div>`:''}<div class="hint" style="margin-top:10px">Above the limit: see KF — no exceptions.</div></div>`; } }
+
   /* attachments */
   if(tractor(k)) h+=attachHtml(m);
 
@@ -558,7 +574,11 @@ function calc(){
   const financed=Math.max(0,subtotal+tax-down-inc);
   let opts=[],note='';
   if(!mc.noInc&&cat){
-    if(cat.finType==='zero72') opts=[{l:'Lead offer',r:'0% APR · 72 months',p:pmt(financed,0,72),t:'AUTO-APPROVED',lead:1},{l:'Backup to close',r:'0% APR · 84 months',p:pmt(financed,0,84),t:'AUTO-APPROVED'}];
+    if(Array.isArray(cat.finOpts)){
+      if(cat.finOpts.length) opts=cat.finOpts.map((o,i)=>({l:o.l||('Option '+(i+1)),r:(+o.rate||0)+'% APR · '+(+o.months||1)+' months',p:pmt(financed,+o.rate||0,Math.max(1,+o.months||1)),t:o.t||'',lead:i===0?1:0}));
+      else note=(D.content&&D.content.financeText&&D.content.financeText.over100Note)||'Published options under 2.5% dealer participation are auto-approved. Over 2.5%? See KF — do not commit without approval.';
+    }
+    else if(cat.finType==='zero72') opts=[{l:'Lead offer',r:'0% APR · 72 months',p:pmt(financed,0,72),t:'AUTO-APPROVED',lead:1},{l:'Backup to close',r:'0% APR · 84 months',p:pmt(financed,0,84),t:'AUTO-APPROVED'}];
     else if(cat.finType==='zero60') opts=[{l:'Lead offer',r:'0% APR · 60 months',p:pmt(financed,0,60),t:'AUTO-APPROVED',lead:1},{l:'Backup to close',r:'0% APR · 72 months',p:pmt(financed,0,72),t:'SPP — SEE KF'}];
     else if(cat.finType==='commMow') opts=[{l:'Lead',r:'1.9% · 36 mo revolving',p:pmt(financed,1.9,36),lead:1},{l:'Alternate',r:'4.9% · 72 months',p:pmt(financed,4.9,72)}];
     else if(cat.finType==='ridingLawn') opts=[{l:'Option 1',r:'0% · 36 months',p:pmt(financed,0,36),lead:1},{l:'Option 2',r:'4.9% · 60 months',p:pmt(financed,4.9,60)}];
@@ -698,7 +718,10 @@ function renderManage(){
   let inc='';
   D.categories.forEach((cat,ci)=>{
     const gs=cat.groups.map((g,gi)=>acc(`g-${ci}-${gi}`,esc(g.label||'Program'),`Bulletin ${esc(g.bul||'—')} · expires ${esc(g.exp||'—')}`,grpHtml(g,ci,gi))).join('');
-    inc+=acc('c-'+ci,`${esc(cat.icon||'')} ${esc(cat.name)}`,cat.groups.length+' program'+(cat.groups.length===1?'':'s'),gs+mop('grp+','+ Add a program',ci,null,null,'sec'));
+    if(!Array.isArray(cat.finOpts)) cat.finOpts=finDefault(cat);
+    const fo=cat.finOpts.map((o,i)=>{ const Q='categories.'+ci+'.finOpts.'+i; return `<div class="mline">${mfi(Q+'.l','Offer name',o.l)}${mfi(Q+'.rate','Rate %',o.rate,'n')}${mfi(Q+'.months','Months',o.months,'n')}${mfi(Q+'.t','Tag (optional)',o.t)}${mop('fin-','Remove',ci,null,i,'danger')}</div>`; }).join('');
+    const finBody=`<div class="hint" style="margin-top:8px">The first offer is the <b>lead</b> offer and is what shows on the model cards and quote bar. Staff see a monthly payment for every offer you list.${cat.finOpts.length?'':' <b>No offers listed</b> — staff see the “see KF” note below instead of payments.'}</div>${fo}${mop('fin+','+ Add an offer',ci,null,null,'sec')}<h5 class="msub">Discount authority (leave blank for none)</h5><div class="mrow2">${mfi('categories.'+ci+'.dgbStd','Standard (fresh stock) %',cat.dgbStd,'nn')}${mfi('categories.'+ci+'.dgbAged','Aged 365+ days %',cat.dgbAged,'nn')}</div>`;
+    inc+=acc('c-'+ci,`${esc(cat.icon||'')} ${esc(cat.name)}`,cat.groups.length+' program'+(cat.groups.length===1?'':'s')+' · '+(cat.finOpts[0]?cat.finOpts[0].rate+'% / '+cat.finOpts[0].months+' mo':'see KF'),acc('f-'+ci,'Finance offers &amp; discount authority','Rates, terms and what staff can approve',finBody)+gs+mop('grp+','+ Add a program',ci,null,null,'sec'));
   });
   const tiers=[2,3,4,5].map(i=>mfi('implTiers.'+i+'.bonus',(D.implTiers[i].label)+' implements → bonus $',D.implTiers[i].bonus,'n')).join('');
   h+=`<h2 class="mh">Incentives</h2>`+acc('inc','Incentive programs','Amounts, bulletin numbers and expiry dates',inc)+acc('tiers','Implement bonus tiers','What each qualifying implement count earns',`<div class="mrow2">${tiers}</div>`);
@@ -707,7 +730,7 @@ function renderManage(){
   const bul=(D.bulletins||[]).map((b,i)=>`<div class="mline" style="display:block;padding:0 12px 12px"><div class="mrow2">${mfi('bulletins.'+i+'.num','Bulletin #',b.num)}${mfi('bulletins.'+i+'.date','Expires / date',b.date)}</div>${mfi('bulletins.'+i+'.title','Title',b.title)}${mft('bulletins.'+i+'.note','Summary',b.note)}${mop('bul-','Remove this bulletin',i,null,null,'danger')}</div>`).join('');
   const rules=((D.content||{}).houseRules||[]).map((r,i)=>`<div class="mline" style="display:block;padding:0 12px 12px">${mfi('content.houseRules.'+i+'.title','Title',r.title)}${mft('content.houseRules.'+i+'.body','Text',r.body)}${mop('rule-','Remove',i,null,null,'danger')}</div>`).join('');
   const chk=((D.content||{}).checklist||[]).map((r,i)=>`<div class="mline" style="display:block;padding:0 12px 12px">${mfi('content.checklist.'+i+'.text','Step',r.text)}${mfi('content.checklist.'+i+'.warn','Warning (optional)',r.warn)}${mop('chk-','Remove',i,null,null,'danger')}</div>`).join('');
-  h+=`<h2 class="mh">Programs tab</h2>`+acc('bul','Bulletins',(D.bulletins||[]).length+' listed',bul+mop('bul+','+ Add a bulletin',null,null,null,'sec'))+acc('rules','House rules',((D.content||{}).houseRules||[]).length+' rules',rules+mop('rule+','+ Add a rule',null,null,null,'sec'))+acc('chk','“Before you close” checklist',((D.content||{}).checklist||[]).length+' steps',chk+mop('chk+','+ Add a step',null,null,null,'sec'));
+  h+=`<h2 class="mh">Programs tab</h2>`+acc('bul','Bulletins',(D.bulletins||[]).length+' listed',bul+mop('bul+','+ Add a bulletin',null,null,null,'sec'))+acc('rules','House rules',((D.content||{}).houseRules||[]).length+' rules',rules+mop('rule+','+ Add a rule',null,null,null,'sec'))+acc('chk','“Before you close” checklist',((D.content||{}).checklist||[]).length+' steps',chk+mop('chk+','+ Add a step',null,null,null,'sec'))+acc('fnote','Finance note','Shown instead of payments when a category lists no finance offers',`${mft('content.financeText.over100Note','Note staff see when a category has no finance offers listed',((D.content||{}).financeText||{}).over100Note)}`);
 
   /* prices */
   const pr=catKeys().map(k=>acc('p-'+k,esc(D.models[k].label),D.models[k].list.length+' models',D.models[k].list.map((m,i)=>`<div class="mprice"><div>${esc(m.label)}<small>${esc(spec(m))}</small></div><input data-path="models.${esc(k)}.list.${i}.price" data-t="n" inputmode="decimal" value="${esc(m.price)}"></div>`).join(''))).join('');
@@ -732,6 +755,8 @@ function manageOp(t){
   else if(op==='cash-'){ g.cash.splice(c,1); }
   else if(op==='ct+'){ if(!g.cashTable) g.cashTable={note:'',cols:['With JD Finance','Cash Purchase'],rows:[]}; g.cashTable.rows.push({m:'Model',vals:[0,0]}); }
   else if(op==='ct-'){ g.cashTable.rows.splice(c,1); }
+  else if(op==='fin+'){ cat.finOpts=cat.finOpts||[]; cat.finOpts.push({l:cat.finOpts.length?'Backup to close':'Lead offer',rate:0,months:72,t:''}); S.open.add('f-'+a); S.open.add('c-'+a); }
+  else if(op==='fin-'){ cat.finOpts.splice(c,1); }
   else if(op==='grp+'){ cat.groups.push({id:cat.id+'_'+Date.now().toString(36),label:'New program',bul:'',exp:'',impl:false,rs:0,rsNote:'',cash:[],cashNote:'',settle:[],cashTable:{note:'',cols:['With JD Finance','Cash Purchase'],rows:[]}}); S.open.add('c-'+a); }
   else if(op==='grp-'){ const n=allModels().filter(o=>o.m.incCat===cat.id&&o.m.incGrp===g.id).length; if(n){ toast(n+' model'+(n>1?'s use':' uses')+' this program — move '+(n>1?'them':'it')+' to another program first'); return; } if(!confirm('Remove this program?')) return; cat.groups.splice(b,1); }
   else if(op==='bul+'){ D.bulletins.unshift({id:'bul'+Date.now().toString(36),num:'',title:'New bulletin',date:'',note:''}); S.open.add('bul'); }
@@ -744,9 +769,10 @@ function manageOp(t){
 }
 function applyField(el){
   const t=el.dataset.t; let v;
-  if(t==='b') v=el.checked; else if(t==='n') v=parseFloat(String(el.value).replace(/[$,\s]/g,''))||0; else v=el.value.trim();
+  if(t==='b') v=el.checked; else if(t==='n') v=parseFloat(String(el.value).replace(/[$,\s%]/g,''))||0; else if(t==='nn'){ const x=parseFloat(String(el.value).replace(/[$,\s%]/g,'')); v=isNaN(x)?null:x; } else v=el.value.trim();
   if(t==='p'&&!/^\d{4,10}$/.test(v)){ toast('The PIN needs 4 or more digits'); el.value=D.adminPin; return; }
-  setP(D,el.dataset.path,v); if(t==='n') el.value=v; markDirty();
+  if(/^content\.financeText/.test(el.dataset.path)){ D.content=D.content||{}; D.content.financeText=D.content.financeText||{}; }
+  setP(D,el.dataset.path,v); if(t==='n'||t==='nn') el.value=v==null?'':v; markDirty();
   if(el.dataset.path==='adminPin') toast('PIN changed — tap Publish so everyone gets it');
 }
 
