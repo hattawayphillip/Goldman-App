@@ -1,6 +1,6 @@
 /* Goldman Equipment — service worker: installable + works with no signal.
    Shell: cache-first, refreshed in background. data.json: network-first. */
-const CACHE = 'goldman-v6';
+const CACHE = 'goldman-v7';
 const SHELL = ['./','./index.html','./office.html','./manifest.json','./logo.png','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL).catch(() => {})).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== CACHE).map(x => caches.delete(x)))).then(() => self.clients.claim())); });

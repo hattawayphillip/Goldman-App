@@ -347,9 +347,11 @@ function finDefault(cat){
   if(cat.finType==='ridingLawn') return [A('Option 1',0,36),A('Option 2',4.9,60)];
   return [];
 }
+function finFor(c,g){ return g&&Array.isArray(g.finOpts)?g.finOpts:(c&&Array.isArray(c.finOpts)?c.finOpts:null); }
 function finTag(m){
   const c=m.incCat?getCat(m.incCat):null; if(!c) return '';
-  if(Array.isArray(c.finOpts)){ const o=c.finOpts[0]; return o?(o.rate+'% · '+o.months+' mo'):'Finance · see KF'; }
+  const g=m.incGrp?getGrp(m.incCat,m.incGrp):null, fo=finFor(c,g);
+  if(fo){ const o=fo[0]; return o?(o.rate+'% · '+o.months+' mo'):((g&&g.finTag)||'Finance · see KF'); }
   return FIN[c.finType]||'';
 }
 const tractor=k=>k==='cut'||k==='5e3'||k==='5e4';
@@ -574,9 +576,10 @@ function calc(){
   const financed=Math.max(0,subtotal+tax-down-inc);
   let opts=[],note='';
   if(!mc.noInc&&cat){
-    if(Array.isArray(cat.finOpts)){
-      if(cat.finOpts.length) opts=cat.finOpts.map((o,i)=>({l:o.l||('Option '+(i+1)),r:(+o.rate||0)+'% APR · '+(+o.months||1)+' months',p:pmt(financed,+o.rate||0,Math.max(1,+o.months||1)),t:o.t||'',lead:i===0?1:0}));
-      else note=(D.content&&D.content.financeText&&D.content.financeText.over100Note)||'Published options under 2.5% dealer participation are auto-approved. Over 2.5%? See KF — do not commit without approval.';
+    const fo=finFor(cat,grp);
+    if(fo){
+      if(fo.length) opts=fo.map((o,i)=>({l:o.l||('Option '+(i+1)),r:(+o.rate||0)+'% APR · '+(+o.months||1)+' months',p:pmt(financed,+o.rate||0,Math.max(1,+o.months||1)),t:o.t||'',lead:i===0?1:0}));
+      else note=(grp&&grp.finNote)||(D.content&&D.content.financeText&&D.content.financeText.over100Note)||'Published options under 2.5% dealer participation are auto-approved. Over 2.5%? See KF — do not commit without approval.';
     }
     else if(cat.finType==='zero72') opts=[{l:'Lead offer',r:'0% APR · 72 months',p:pmt(financed,0,72),t:'AUTO-APPROVED',lead:1},{l:'Backup to close',r:'0% APR · 84 months',p:pmt(financed,0,84),t:'AUTO-APPROVED'}];
     else if(cat.finType==='zero60') opts=[{l:'Lead offer',r:'0% APR · 60 months',p:pmt(financed,0,60),t:'AUTO-APPROVED',lead:1},{l:'Backup to close',r:'0% APR · 72 months',p:pmt(financed,0,72),t:'SPP — SEE KF'}];
@@ -695,6 +698,14 @@ function grpHtml(g,ci,gi){
   h+=`<div class="mrow2">${mfi(P+'.bul','Bulletin number',g.bul)}${mfi(P+'.exp','Expires (e.g. Nov 1, 2026)',g.exp)}</div>`;
   h+=mfc(P+'.impl','Implement bonus applies — adds automatically when qualifying attachments are chosen',g.impl);
   h+=`<div class="mrow2">${mfi(P+'.rs','Risk-share bonus $ (0 = none)',g.rs,'n')}${mfi(P+'.rsNote','Risk-share note',g.rsNote)}</div>`;
+  h+=`<h5 class="msub">Finance offers for this program</h5>`;
+  if(Array.isArray(g.finOpts)){
+    h+=`<div class="hint" style="margin-top:6px">This program has its <b>own</b> finance offers. If you list none, staff see the note below instead of payments.</div>`;
+    g.finOpts.forEach((o,i)=>{ const Q=P+'.finOpts.'+i; h+=`<div class="mline">${mfi(Q+'.l','Offer name',o.l)}${mfi(Q+'.rate','Rate %',o.rate,'n')}${mfi(Q+'.months','Months',o.months,'n')}${mfi(Q+'.t','Tag (optional)',o.t)}${mop('gfin-','Remove',ci,gi,i,'danger')}</div>`; });
+    h+=mop('gfin+','+ Add an offer',ci,gi,null,'sec')+mfi(P+'.finNote','Note when no offers are listed',g.finNote)+mfi(P+'.finTag','Badge text when no offers are listed (e.g. No interest 9 mo)',g.finTag)+`<div>${mop('gfin-off','Use the category’s offers instead',ci,gi,null,'ghost')}</div>`;
+  } else {
+    h+=`<div class="hint" style="margin-top:6px">Uses the category’s finance offers. Give this program its own if its rates are different.</div>${mop('gfin-on','Give this program its own offers',ci,gi,null,'sec')}`;
+  }
   h+=`<h5 class="msub">Bonuses staff can switch on</h5>`;
   (g.settle||[]).forEach((s,i)=>{ const Q=P+'.settle.'+i; h+=`<div class="mline">${mfi(Q+'.lbl','Name',s.lbl)}${mfi(Q+'.a','Amount $',s.a,'n')}${mfi(Q+'.w','Warning (optional)',s.w)}${mop('settle-','Remove',ci,gi,i,'danger')}</div>`; });
   h+=mop('settle+','+ Add a bonus',ci,gi,null,'sec');
@@ -755,6 +766,10 @@ function manageOp(t){
   else if(op==='cash-'){ g.cash.splice(c,1); }
   else if(op==='ct+'){ if(!g.cashTable) g.cashTable={note:'',cols:['With JD Finance','Cash Purchase'],rows:[]}; g.cashTable.rows.push({m:'Model',vals:[0,0]}); }
   else if(op==='ct-'){ g.cashTable.rows.splice(c,1); }
+  else if(op==='gfin-on'){ g.finOpts=(Array.isArray(cat.finOpts)?cat.finOpts:[]).map(o=>Object.assign({},o)); S.open.add('g-'+a+'-'+b); }
+  else if(op==='gfin-off'){ delete g.finOpts; }
+  else if(op==='gfin+'){ g.finOpts.push({l:g.finOpts.length?'Backup to close':'Lead offer',rate:0,months:72,t:''}); }
+  else if(op==='gfin-'){ g.finOpts.splice(c,1); }
   else if(op==='fin+'){ cat.finOpts=cat.finOpts||[]; cat.finOpts.push({l:cat.finOpts.length?'Backup to close':'Lead offer',rate:0,months:72,t:''}); S.open.add('f-'+a); S.open.add('c-'+a); }
   else if(op==='fin-'){ cat.finOpts.splice(c,1); }
   else if(op==='grp+'){ cat.groups.push({id:cat.id+'_'+Date.now().toString(36),label:'New program',bul:'',exp:'',impl:false,rs:0,rsNote:'',cash:[],cashNote:'',settle:[],cashTable:{note:'',cols:['With JD Finance','Cash Purchase'],rows:[]}}); S.open.add('c-'+a); }
