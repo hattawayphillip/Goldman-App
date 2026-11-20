@@ -257,6 +257,7 @@ main{padding-bottom:calc(86px + var(--safe-b))}
 <div class="toast" id="toast"></div>
 <div id="pubHost"></div>
 <input type="file" id="filePick" accept="image/*" class="hidden">
+<input type="file" id="bulkPick" accept="image/*" multiple class="hidden">
 
 <script>
 /* =====================================================================
@@ -560,7 +561,7 @@ function openQuote(){
   const c=calc();
   const rows=[[c.m.label,fmt(c.price)]].concat(c.atts.map(a=>[(a.brand==='John Deere'?'JD ':a.brand+' ')+a.model+' — '+a.desc,fmt(a.price)]));
   if(c.tax>0) rows.push(['Sales tax',fmt(c.tax)]); if(c.inc>0) rows.push(['Incentives applied','−'+fmt(c.inc)]); if(c.down>0) rows.push(['Down payment','−'+fmt(c.down)]);
-  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in" onclick="event.stopPropagation()"><h3>Quote</h3>
+  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>Quote</h3>
     <div class="blk" style="margin:0 0 12px">${rows.map(r=>`<div class="qrow"><span>${esc(r[0])}</span><span>${esc(r[1])}</span></div>`).join('')}<div class="qrow big"><span>Amount financed</span><span>${fmt(c.financed)}</span></div>${c.opts.map(o=>`<div class="qrow"><span>${esc(o.r)}</span><span>${fmtD(o.p)}/mo</span></div>`).join('')}</div>
     <input type="text" id="qName" placeholder="Customer name"><input type="tel" id="qPhone" placeholder="Phone"><input type="email" id="qEmail" placeholder="Email">
     <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn pri" style="flex:1" data-act="qshare">Share</button><button class="btn sec" style="flex:1" data-act="qcopy">Copy text</button><button class="btn ghost" style="flex:1" data-act="qsave">Save</button></div>
@@ -579,7 +580,7 @@ function saveQuote(){
 /* ---------- admin ---------- */
 function adminLogin(){
   if(S.admin){ S.admin=false; render(); if(S.cur) openModel(S.cur.m.id,true); toast('Manage mode off'); return; }
-  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in" onclick="event.stopPropagation()"><h3>Manage</h3><input type="password" id="pin" inputmode="numeric" placeholder="Admin PIN" autocomplete="off"><div id="pinErr" class="hint" style="color:var(--bad);margin:0 0 10px"></div><button class="btn pri blk100" data-act="pinok">Unlock</button></div></div>`;
+  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>Manage</h3><input type="password" id="pin" inputmode="numeric" placeholder="Admin PIN" autocomplete="off"><div id="pinErr" class="hint" style="color:var(--bad);margin:0 0 10px"></div><button class="btn pri blk100" data-act="pinok">Unlock</button></div></div>`;
   setTimeout(()=>{ const p=$('#pin'); if(p) p.focus(); },60);
 }
 function pinOk(){
@@ -627,8 +628,9 @@ function markDirty(){ save(true); renderPubBar(); }
 
 function openManage(){
   const t=ghTarget(), has=!!ghToken();
-  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in" onclick="event.stopPropagation()"><h3>Manage mode is on</h3>
+  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>Manage mode is on</h3>
   <div class="blk" style="margin:0 0 12px"><h4>What you can do</h4><div class="note-box" style="background:none;padding:0">Tap the camera on any model or attachment to add its photo. Open a tractor and choose which attachments fit it. Tap Publish when you’re done and every phone updates.<br><br>Incentives, bulletins and house rules are edited in the <a href="./office.html" style="color:var(--green-d);font-weight:700">back office</a>.</div></div>
+  <div class="blk" style="margin:0 0 12px"><h4>Photos</h4><div class="hint" style="margin:0 0 10px">${(()=>{ const s=photoStats(); return '<b>'+s.hasM+'</b> of '+s.ms.length+' models and <b>'+s.hasA+'</b> of '+s.as.length+' attachments have a photo.'; })()}</div><button class="btn pri blk100" data-act="bulk">Add many photos at once</button><div class="hint">Name each picture like the model — <b>2025R.jpg</b>, <b>Z920M 48.jpg</b>, <b>RC2048.jpg</b> — and I match them for you.</div><div style="margin-top:10px"><button class="btn sm ghost" data-act="bmiss">Copy list of names still needed</button></div></div>
   <div class="blk" style="margin:0 0 12px"><h4>Publishing key</h4><div class="hint" style="margin:0 0 10px">${has?'<b style="color:var(--money)">Connected on this phone</b> to '+esc(t.owner+'/'+t.repo)+'.':'Not connected. Paste your GitHub key once to publish photos and changes.'}</div><input type="password" id="tk" placeholder="github_pat_…" autocomplete="off"><div style="display:flex;gap:8px"><button class="btn pri" style="flex:1" data-act="tksave">Save key</button><button class="btn ghost" data-act="tkclear">Disconnect</button></div><div id="tkMsg" class="hint"></div></div>
   <button class="btn sec blk100" data-act="sheetx">Done</button></div></div>`;
 }
@@ -663,6 +665,95 @@ async function onPhoto(file){
   }catch(e){ toast(e.message||'Upload failed'); }
 }
 
+/* bulk photos: pick many files, match them to models by file name, send them as ONE commit */
+const normN=s=>String(s==null?'':s).toLowerCase().replace(/heavy\s*duty/g,'hd').replace(/[^a-z0-9]/g,'');
+const stemOf=fn=>fn.replace(/\.[^.]+$/,'').replace(/\s*\(\d+\)\s*$/,'').replace(/[-_ ]copy$/i,'');
+const imgPath=(kind,id)=>'img/'+(kind==='m'?'m-':'a-')+id.replace(/[^a-z0-9_-]/gi,'_')+'.jpg';
+function bulkTargets(){
+  const t=[]; allModels().forEach(o=>t.push({kind:'m',id:o.m.id,label:o.m.label,keys:[normN(o.m.label),normN(o.m.id)]}));
+  (D.attachments||[]).forEach(a=>t.push({kind:'a',id:a.id,label:a.model,keys:[normN(a.model),normN(a.id)]}));
+  return t;
+}
+function bulkMatch(files){
+  const T=bulkTargets();
+  return files.map(f=>{
+    const n=normN(stemOf(f.name)), exact=T.filter(t=>t.keys.indexOf(n)>-1);
+    const like=(exact.length||n.length<4)?[]:T.filter(t=>t.keys[0].indexOf(n)===0);
+    return {file:f,n,exact,like,useLike:!exact.length&&like.length>0};
+  });
+}
+function bulkAssign(rows){
+  const A=new Map(); rows.forEach(r=>r.exact.forEach(t=>A.set(t.kind+':'+t.id,{t,row:r})));
+  rows.forEach(r=>{ if(r.useLike) r.like.forEach(t=>{ const k=t.kind+':'+t.id; if(!A.has(k)) A.set(k,{t,row:r}); }); });
+  return A;
+}
+function pickBulk(){ if(!ghToken()){ openManage(); toast('Connect your publishing key first'); return; } const f=$('#bulkPick'); f.value=''; f.click(); }
+function openBulk(files){
+  files=files.filter(f=>/^image\//.test(f.type)||/\.(jpe?g|png|webp|heic)$/i.test(f.name)); if(!files.length){ toast('No pictures selected'); return; }
+  files.sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true}));
+  S.bulk={rows:bulkMatch(files),busy:false,msg:''}; drawBulk();
+}
+function drawBulk(){
+  const B=S.bulk, A=bulkAssign(B.rows), thumbs=B.rows.length<=40;
+  const matched=B.rows.filter(r=>r.exact.length||(r.useLike&&r.like.length)).length, none=B.rows.filter(r=>!r.exact.length&&!r.like.length).length;
+  const rowHtml=B.rows.map((r,i)=>{
+    const th=thumbs?`<div class="th"><img src="${esc(r.url||(r.url=URL.createObjectURL(r.file)))}" alt=""></div>`:`<div class="th">${esc((r.file.name.split('.').pop()||'').slice(0,3).toUpperCase())}</div>`;
+    let tx; if(r.exact.length) tx=`<b style="color:var(--money)">→ ${esc(r.exact.map(t=>t.label).join(', '))}</b>`;
+    else if(r.like.length) tx=`<span>${r.useLike?'→':'Could be'} ${esc(r.like.slice(0,4).map(t=>t.label).join(', '))}${r.like.length>4?' + '+(r.like.length-4)+' more':''}</span><span style="display:block;color:var(--green-d);font-weight:700;margin-top:3px">${r.useLike?'✓ Using it for all '+r.like.length+' similar':'Tap to use it for all '+r.like.length+' similar'}</span>`;
+    else tx=`<span style="color:var(--bad)">No match — rename the file to the model name</span>`;
+    const tap=(!r.exact.length&&r.like.length)?` data-act="blike" data-i="${i}" style="cursor:pointer"`:'';
+    return `<div class="chk${r.useLike?' on':''}"${tap}>${th}<div class="tx">${esc(r.file.name)} <small>${tx}</small></div></div>`;
+  }).join('');
+  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>Add many photos</h3>
+  <div class="note-box" style="margin-bottom:12px"><b>${matched}</b> of ${B.rows.length} pictures matched <b>${A.size}</b> item${A.size===1?'':'s'}${none?`; <b style="color:var(--bad)">${none}</b> didn’t match anything and will be skipped`:''}. Photos are matched by file name, so a picture called <b>2025R.jpg</b> goes to the 2025R.</div>
+  <div class="blk" style="margin:0 0 12px;padding:6px 14px">${rowHtml}</div>
+  <div id="bulkMsg" class="hint" style="margin:0 0 10px;font-size:14px">${esc(B.msg)}</div>
+  <button class="btn pri blk100" data-act="bgo" ${(B.busy||!A.size)?'disabled style="opacity:.5"':''}>${B.busy?'Uploading…':'Upload '+(new Set([...A.values()].map(x=>x.row)).size)+' picture'+(A.size===1?'':'s')}</button>
+  <div style="text-align:center;margin-top:10px"><button class="btn sm ghost" data-act="${B.busy?'':'sheetx'}">Cancel</button></div></div></div>`;
+}
+async function ghApi(path,opt){
+  const t=ghTarget(), tok=ghToken(); if(!tok) throw new Error('Connect your publishing key first (gear → Manage).');
+  const r=await fetch('https://api.github.com/repos/'+t.owner+'/'+t.repo+path,Object.assign({headers:Object.assign({'Content-Type':'application/json'},ghHeaders(tok))},opt||{}));
+  if(r.status===401||r.status===403) throw new Error('GitHub refused the request — check the publishing key (or wait a minute and retry).');
+  if(r.status===422&&opt&&opt.method==='PATCH') throw new Error('Someone else published at the same moment. Try again.');
+  if(!r.ok) throw new Error('GitHub answered '+r.status+'.'); return r.json();
+}
+async function bulkGo(){
+  const B=S.bulk; if(B.busy) return; const A=bulkAssign(B.rows); if(!A.size) return;
+  const used=[...new Set([...A.values()].map(x=>x.row))], say=m=>{ B.msg=m; const e=$('#bulkMsg'); if(e) e.textContent=m; };
+  B.busy=true; drawBulk();
+  try{
+    const done=new Map(); let n=0;
+    for(const r of used){
+      say('Preparing picture '+(++n)+' of '+used.length+'…');
+      const rs=await resize(r.file,1000), buf=new Uint8Array(await rs.blob.arrayBuffer()); let bin=''; for(let i=0;i<buf.length;i+=0x8000) bin+=String.fromCharCode.apply(null,buf.subarray(i,i+0x8000));
+      const blob=await ghApi('/git/blobs',{method:'POST',body:JSON.stringify({content:btoa(bin),encoding:'base64'})});
+      done.set(r,{sha:blob.sha,url:URL.createObjectURL(rs.blob)});
+    }
+    say('Saving to GitHub…');
+    const t=ghTarget(), repo=await ghApi(''), br=repo.default_branch;
+    const ref=await ghApi('/git/ref/heads/'+br), head=ref.object.sha, cm=await ghApi('/git/commits/'+head);
+    const dir=t.dir?t.dir+'/':'', entries=[...A.values()].map(x=>({path:dir+imgPath(x.t.kind,x.t.id),mode:'100644',type:'blob',sha:done.get(x.row).sha}));
+    const tree=await ghApi('/git/trees',{method:'POST',body:JSON.stringify({base_tree:cm.tree.sha,tree:entries})});
+    const nc=await ghApi('/git/commits',{method:'POST',body:JSON.stringify({message:'Add '+A.size+' photos',tree:tree.sha,parents:[head]})});
+    await ghApi('/git/refs/heads/'+br,{method:'PATCH',body:JSON.stringify({sha:nc.sha})});
+    const v=Date.now(); D.modelImages=D.modelImages||{};
+    A.forEach(x=>{ const rel=imgPath(x.t.kind,x.t.id)+'?v='+v, u=done.get(x.row).url; LOCALIMG[x.t.kind+':'+x.t.id]=u;
+      if(x.t.kind==='m') D.modelImages[x.t.id]=rel; else { const a=D.attachments.find(z=>z.id===x.t.id); if(a) a.img=rel; } });
+    markDirty(); S.bulk=null; $('#sheetHost').innerHTML=''; render(); if(S.cur) openModel(S.cur.m.id,true);
+    toast(A.size+' photo'+(A.size===1?'':'s')+' added — tap Publish so every phone gets them');
+  }catch(e){ B.busy=false; B.msg=e.message||'Upload failed'; drawBulk(); }
+}
+function photoStats(){
+  const ms=allModels(), as=D.attachments||[], hasM=ms.filter(o=>photo(o.m.id)).length, hasA=as.filter(a=>attPhoto(a)).length;
+  return {ms,as,hasM,hasA};
+}
+function copyMissing(){
+  const s=photoStats(), lines=[]; s.ms.filter(o=>!photo(o.m.id)).forEach(o=>lines.push(o.m.label)); lines.push('--- attachments ---'); s.as.filter(a=>!attPhoto(a)).forEach(a=>lines.push(a.model));
+  const txt='Pictures still needed (name each file exactly like this, e.g. 2025R.jpg):\n'+lines.join('\n');
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('List copied'),()=>{ prompt('Copy this list:',txt); });
+}
+
 /* compatibility picker */
 function openCompat(){
   const {m,k}=S.cur; const sel=new Set(compatFor(m.id)); S.sheet={sel,id:m.id,q:''};
@@ -675,7 +766,7 @@ function drawCompat(){
   const sameSeries=allModels().filter(o=>o.k===f.k&&series(o.k,o.m.label)===series(f.k,m.label));
   const sameGrp=allModels().filter(o=>o.m.incGrp&&o.m.incGrp===m.incGrp);
   const sameCat=allModels().filter(o=>o.k===f.k);
-  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in" onclick="event.stopPropagation()"><h3>Attachments that fit the ${esc(m.label)}</h3>
+  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>Attachments that fit the ${esc(m.label)}</h3>
   <input type="text" id="cq" placeholder="Search attachments" value="${esc(q)}">
   ${others.length?`<select id="copyFrom"><option value="">Copy from another model…</option>${others.sort(byLabel).map(o=>`<option value="${esc(o.m.id)}">${esc(o.m.label)} (${compatFor(o.m.id).length})</option>`).join('')}</select>`:''}
   <div class="blk" style="margin:0 0 12px;padding:6px 14px">${Object.keys(groups).map(t=>`<div class="ahead" style="margin:12px 0 4px;display:flex;justify-content:space-between"><span>${esc(t)}</span><button class="btn sm ghost" style="height:28px;font-size:12px;padding:0 10px" data-act="cgrp" data-t="${esc(t)}">All</button></div>${groups[t].map(a=>{ const on=sel.has(a.id), p=attPhoto(a); return `<div class="chk${on?' on':''}" data-act="ctog" data-id="${esc(a.id)}"><div class="cb">${on?'✓':''}</div><div class="th">${p?`<img src="${esc(p)}" alt="">`:esc((a.brand||'').slice(0,2).toUpperCase())}</div><div class="tx">${esc(a.model)} <small>${esc(a.brand)} · ${esc(a.desc)}</small></div></div>`; }).join('')}`).join('')}</div>
@@ -722,6 +813,10 @@ document.addEventListener('click',e=>{
   else if(a==='cgrp'){ const tp=t.dataset.t; D.attachments.filter(x=>x.cat===tp).forEach(x=>S.sheet.sel.add(x.id)); const sc=$('.sheet-in').scrollTop; drawCompat(); $('.sheet-in').scrollTop=sc; }
   else if(a==='csave') saveCompat();
   else if(a==='publish') publish();
+  else if(a==='bulk') pickBulk();
+  else if(a==='bmiss') copyMissing();
+  else if(a==='blike'){ const r=S.bulk.rows[+t.dataset.i]; r.useLike=!r.useLike; const sc=$('.sheet-in').scrollTop; drawBulk(); $('.sheet-in').scrollTop=sc; }
+  else if(a==='bgo') bulkGo();
   else if(a==='tksave') saveTok();
   else if(a==='tkclear'){ try{localStorage.removeItem(TOK);}catch(e){} openManage(); }
   else if(a==='editprice') editPrice();
@@ -737,6 +832,7 @@ document.addEventListener('input',e=>{
 document.addEventListener('change',e=>{
   if(e.target.id==='copyFrom'&&e.target.value){ S.sheet.sel=new Set(compatFor(e.target.value)); drawCompat(); }
   else if(e.target.id==='filePick') onPhoto(e.target.files[0]);
+  else if(e.target.id==='bulkPick') openBulk(Array.from(e.target.files));
 });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('#sheetHost').innerHTML) $('#sheetHost').innerHTML=''; else if(S.cur) closeDrawer(); } if(e.key==='Enter'&&$('#pin')&&document.activeElement===$('#pin')) pinOk(); });
 document.addEventListener('focusout',e=>{ if(e.target.id==='q') S._focusQ=false; });
