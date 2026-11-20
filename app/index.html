@@ -223,6 +223,37 @@ main{padding-bottom:calc(86px + var(--safe-b))}
 .splash{height:70vh;display:grid;place-items:center;text-align:center;color:var(--ink2)}
 @media(max-width:560px){.pill{display:none}}
 @media print{.top,.nav,.drawer,.scrim{display:none}}
+/* manage page */
+.mng{max-width:860px;padding-bottom:150px}
+.mng .blk2{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:16px 18px;margin-bottom:14px}
+.mng .blk2 h4{margin:0 0 10px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);font-weight:700}
+.acc{background:#fff;border-radius:var(--r);box-shadow:var(--sh);margin-bottom:12px;overflow:hidden}
+.acc .acc{box-shadow:none;border:1px solid var(--line);border-radius:14px;margin:10px 0 0}
+.acc>summary{list-style:none;cursor:pointer;padding:15px 18px;font-weight:700;font-size:16px;display:flex;flex-direction:column;gap:2px;position:relative;padding-right:44px}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:'';position:absolute;right:20px;top:50%;width:9px;height:9px;border-right:2.2px solid var(--ink3);border-bottom:2.2px solid var(--ink3);transform:translateY(-70%) rotate(45deg);transition:.15s}
+.acc[open]>summary::after{transform:translateY(-30%) rotate(-135deg)}
+.acc>summary small{font-weight:600;font-size:12.5px;color:var(--ink3)}
+.accb{padding:2px 18px 18px}
+.acc .acc .accb{padding:2px 14px 14px}
+.mf{display:block;margin:10px 0 0}
+.mf>span{display:block;font-size:11.5px;font-weight:700;color:var(--ink3);letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px}
+.mf input,.mf textarea,.mf select{width:100%;border:1px solid var(--line);border-radius:12px;padding:0 12px;height:44px;font-size:16px;background:#fafbfa;color:var(--ink);outline:none;font-family:inherit}
+.mf textarea{height:auto;min-height:70px;padding:10px 12px;resize:vertical;line-height:1.4}
+.mf input:focus,.mf textarea:focus,.mf select:focus{border-color:var(--green);background:#fff}
+.mck{display:flex;align-items:flex-start;gap:10px;margin:14px 0 2px;font-size:14.5px;line-height:1.35}
+.mck input{width:20px;height:20px;margin-top:1px;accent-color:var(--green)}
+.mrow2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mline{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;align-items:end;background:#f6f8f5;border-radius:14px;padding:4px 12px 12px;margin-top:10px}
+.mline .btn{align-self:end}
+.msub{margin:20px 0 0;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-d);font-weight:800}
+.mng .btn.sm{margin-top:10px}
+.mprice{display:grid;grid-template-columns:1fr 130px;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line);font-size:15px}
+.mprice:first-of-type{border-top:0}
+.mprice input{height:40px;border:1px solid var(--line);border-radius:10px;padding:0 10px;font-size:16px;font-weight:700;text-align:right;width:100%;background:#fafbfa;color:var(--ink)}
+.mprice small{display:block;color:var(--ink3);font-size:12px}
+.nav button.hidden{display:none}
+.mh{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin:26px 0 10px;font-weight:700}
 </style>
 </head>
 <body>
@@ -241,6 +272,7 @@ main{padding-bottom:calc(86px + var(--safe-b))}
   <button data-act="tab" data-tab="catalog" class="on" id="nv-catalog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>Catalog</button>
   <button data-act="tab" data-tab="ref" id="nv-ref"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h6M8 11h6"/></svg>Programs</button>
   <button data-act="tab" data-tab="saved" id="nv-saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>Quotes</button>
+  <button data-act="tab" data-tab="manage" id="nv-manage" class="hidden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Manage</button>
 </div></nav>
 
 <div class="scrim" id="scrim" data-act="close"></div>
@@ -335,10 +367,8 @@ async function sync(silent){
     const seen=Number(localStorage.getItem(SEEN)||0), pub=Number(remote.published||0);
     if(pub>seen){
       if(isDirty()){ banner('Newer prices were published. Publish or discard your changes to load them.',true); return; }
-      const keep={savedDeals:D.savedDeals,adminPin:D.adminPin,salesPin:D.salesPin};
-      const rot=remote.pushPins===true;
-      D=remote; delete D.pushPins; D.savedDeals=keep.savedDeals||[];
-      if(!rot){ D.adminPin=keep.adminPin||remote.adminPin||'1234'; D.salesPin=keep.salesPin||remote.salesPin||'1111'; }
+      const keep={savedDeals:D.savedDeals};
+      D=remote; delete D.pushPins; D.savedDeals=keep.savedDeals||[]; D.adminPin=D.adminPin||'1234';
       D.modelImages=D.modelImages||{}; D.compat=D.compat||{};
       save(); try{localStorage.setItem(SEEN,String(pub));}catch(e){}
       render(); if(S.cur) openModel(S.cur.m.id,true);
@@ -355,7 +385,10 @@ function render(){
   $('#updPill').textContent='Updated '+(D.lastUpdated||'');
   document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===S.tab));
   $('#adminBtn').classList.toggle('on',S.admin);
-  if(S.tab==='catalog') renderCatalog(); else if(S.tab==='ref') renderRef(); else renderSaved();
+  $('#nv-manage').classList.toggle('hidden',!S.admin);
+  if(S.tab==='manage'&&!S.admin) S.tab='catalog';
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===S.tab));
+  if(S.tab==='catalog') renderCatalog(); else if(S.tab==='ref') renderRef(); else if(S.tab==='manage') renderManage(); else renderSaved();
   renderPubBar();
 }
 function card(o){
@@ -453,7 +486,7 @@ function drawerHtml(){
   if(grp){ const e=expInfo(grp.exp); h+=`<div class="exp ${e.c}">${esc(e.t)}${e.c==='ok'?'':' — '+esc(grp.exp)} · Bulletin ${esc(grp.bul)}</div>`; }
 
   /* price */
-  h+=`<div class="blk"><h4>Price</h4><div class="field"><label>Sell price<input id="inPrice" inputmode="decimal" value="${S.price!=null?S.price:m.price}"></label></div>${mc.note?`<div class="hint">${esc(mc.note)}</div>`:''}</div>`;
+  h+=`<div class="blk"><h4>Price</h4><div class="field"><label>Sell price<input id="inPrice" inputmode="decimal" value="${S.price!=null?S.price:m.price}"></label></div>${mc.note?`<div class="hint">${esc(mc.note)}</div>`:''}${S.admin?`<div style="margin-top:12px"><button class="btn sm sec" data-act="medit" data-id="${esc(m.id)}">Edit this model — name, price, program, remove</button></div>`:''}</div>`;
 
   /* incentives */
   if(grp){
@@ -461,7 +494,7 @@ function drawerHtml(){
     if(grp.impl){ any=true; ih+=`<div class="row"><div class="grow"><div class="lbl">Implement bonus</div><div class="note">Adds automatically for qualifying JD / Frontier implements you pick below. CCE and third-party don’t count.</div></div><div class="amt" id="implAmt">—</div></div>`; }
     if(grp.rs>0){ any=true; ih+=`<div class="row" data-act="trade" style="cursor:pointer"><div class="grow"><div class="lbl">Risk share bonus</div><div class="note">${esc(grp.rsNote)}</div></div><div class="amt">+${fmt(grp.rs)}</div><div class="tog${S.trade?' on':''}" id="tradeTog"></div></div>`; }
     grp.settle.forEach((s,i)=>{ any=true; const on=S.bon.has('settle_'+i); ih+=`<div class="row" data-act="bon" data-key="settle_${i}" style="cursor:pointer"><div class="grow"><div class="lbl">${esc(s.lbl)}</div>${s.w?`<div class="warnx">${esc(s.w)}</div>`:''}</div><div class="amt">+${fmt(s.a)}</div><div class="tog${on?' on':''}"></div></div>`; });
-    grp.cash.forEach((c,i)=>{ any=true; const on=S.bon.has('cash_'+i); ih+=`<div class="row" data-act="bon" data-key="cash_${i}" style="cursor:pointer"><div class="grow"><div class="lbl">${esc(c.lbl||'Cash bonus')}</div>${grp.cashNote?`<div class="note">${esc(grp.cashNote)}</div>`:''}</div><div class="amt">+${fmt(c.a)}</div><div class="tog${on?' on':''}"></div></div>`; });
+    grp.cash.forEach((c,i)=>{ any=true; const on=S.bon.has('cash_'+i); ih+=`<div class="row" data-act="bon" data-key="cash_${i}" style="cursor:pointer"><div class="grow"><div class="lbl">${esc(c.lbl||c.m||'Cash bonus')}</div>${grp.cashNote?`<div class="note">${esc(grp.cashNote)}</div>`:''}</div><div class="amt">+${fmt(c.a)}</div><div class="tog${on?' on':''}"></div></div>`; });
     if(grp.cashTable&&grp.cashTable.rows.length){
       any=true; const ct=grp.cashTable;
       const ix=ctRows(grp,m);
@@ -579,12 +612,12 @@ function saveQuote(){
 
 /* ---------- admin ---------- */
 function adminLogin(){
-  if(S.admin){ S.admin=false; render(); if(S.cur) openModel(S.cur.m.id,true); toast('Manage mode off'); return; }
+  if(S.admin){ S.admin=false; if(S.tab==='manage') S.tab='catalog'; render(); if(S.cur) openModel(S.cur.m.id,true); window.scrollTo(0,0); toast('Manage mode off'); return; }
   $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>Manage</h3><input type="password" id="pin" inputmode="numeric" placeholder="Admin PIN" autocomplete="off"><div id="pinErr" class="hint" style="color:var(--bad);margin:0 0 10px"></div><button class="btn pri blk100" data-act="pinok">Unlock</button></div></div>`;
   setTimeout(()=>{ const p=$('#pin'); if(p) p.focus(); },60);
 }
 function pinOk(){
-  if($('#pin').value===D.adminPin){ S.admin=true; $('#sheetHost').innerHTML=''; render(); if(S.cur) openModel(S.cur.m.id,true); openManage(); }
+  if($('#pin').value===D.adminPin){ S.admin=true; $('#sheetHost').innerHTML=''; if(S.cur) closeDrawer(); openManage(); }
   else { $('#pinErr').textContent='That PIN isn’t right.'; }
 }
 function ghTarget(){
@@ -626,14 +659,134 @@ async function publish(){
 function renderPubBar(){ $('#pubHost').innerHTML=(S.admin&&isDirty())?`<div class="pubbar"><span>You have unpublished changes</span><button class="btn" data-act="publish">Publish</button></div>`:''; }
 function markDirty(){ save(true); renderPubBar(); }
 
-function openManage(){
-  const t=ghTarget(), has=!!ghToken();
-  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>Manage mode is on</h3>
-  <div class="blk" style="margin:0 0 12px"><h4>What you can do</h4><div class="note-box" style="background:none;padding:0">Tap the camera on any model or attachment to add its photo. Open a tractor and choose which attachments fit it. Tap Publish when you’re done and every phone updates.<br><br>Incentives, bulletins and house rules are edited in the <a href="./office.html" style="color:var(--green-d);font-weight:700">back office</a>.</div></div>
-  <div class="blk" style="margin:0 0 12px"><h4>Photos</h4><div class="hint" style="margin:0 0 10px">${(()=>{ const s=photoStats(); return '<b>'+s.hasM+'</b> of '+s.ms.length+' models and <b>'+s.hasA+'</b> of '+s.as.length+' attachments have a photo.'; })()}</div><button class="btn pri blk100" data-act="bulk">Add many photos at once</button><div class="hint">Name each picture like the model — <b>2025R.jpg</b>, <b>Z920M 48.jpg</b>, <b>RC2048.jpg</b> — and I match them for you.</div><div style="margin-top:10px"><button class="btn sm ghost" data-act="bmiss">Copy list of names still needed</button></div></div>
-  <div class="blk" style="margin:0 0 12px"><h4>Publishing key</h4><div class="hint" style="margin:0 0 10px">${has?'<b style="color:var(--money)">Connected on this phone</b> to '+esc(t.owner+'/'+t.repo)+'.':'Not connected. Paste your GitHub key once to publish photos and changes.'}</div><input type="password" id="tk" placeholder="github_pat_…" autocomplete="off"><div style="display:flex;gap:8px"><button class="btn pri" style="flex:1" data-act="tksave">Save key</button><button class="btn ghost" data-act="tkclear">Disconnect</button></div><div id="tkMsg" class="hint"></div></div>
-  <button class="btn sec blk100" data-act="sheetx">Done</button></div></div>`;
+/* ---------- manage page: everything the old back office did, on this page ---------- */
+S.open=new Set();
+const getP=(o,p)=>p.split('.').reduce((x,k)=>x==null?x:x[k],o);
+function setP(o,p,v){ const ks=p.split('.'), last=ks.pop(); ks.reduce((x,k)=>x[k],o)[last]=v; }
+const mfi=(path,label,val,t)=>`<label class="mf"><span>${esc(label)}</span><input data-path="${esc(path)}" data-t="${t||'t'}" ${t==='p'?'type="password" inputmode="numeric" autocomplete="off"':(t==='n'?'inputmode="decimal"':'')} value="${esc(val==null?'':val)}"></label>`;
+const mft=(path,label,val)=>`<label class="mf"><span>${esc(label)}</span><textarea data-path="${esc(path)}" data-t="t" rows="3">${esc(val==null?'':val)}</textarea></label>`;
+const mfc=(path,label,on)=>`<label class="mck"><input type="checkbox" data-path="${esc(path)}" data-t="b"${on?' checked':''}><span>${esc(label)}</span></label>`;
+const mop=(op,txt,a,b,c,cls)=>`<button class="btn sm ${cls||'ghost'}" data-act="mop" data-op="${op}"${a!=null?` data-a="${esc(a)}"`:''}${b!=null?` data-b="${esc(b)}"`:''}${c!=null?` data-c="${esc(c)}"`:''}>${txt}</button>`;
+const acc=(id,title,sub,body)=>`<details class="acc" id="dt-${esc(id)}"${S.open.has(id)?' open':''}><summary><span>${title}</span>${sub?`<small>${sub}</small>`:''}</summary><div class="accb">${body}</div></details>`;
+
+function grpHtml(g,ci,gi){
+  const P='categories.'+ci+'.groups.'+gi, ct=g.cashTable; let h='';
+  h+=mfi(P+'.label','Program name (the models it covers)',g.label);
+  h+=`<div class="mrow2">${mfi(P+'.bul','Bulletin number',g.bul)}${mfi(P+'.exp','Expires (e.g. Nov 1, 2026)',g.exp)}</div>`;
+  h+=mfc(P+'.impl','Implement bonus applies — adds automatically when qualifying attachments are chosen',g.impl);
+  h+=`<div class="mrow2">${mfi(P+'.rs','Risk-share bonus $ (0 = none)',g.rs,'n')}${mfi(P+'.rsNote','Risk-share note',g.rsNote)}</div>`;
+  h+=`<h5 class="msub">Bonuses staff can switch on</h5>`;
+  (g.settle||[]).forEach((s,i)=>{ const Q=P+'.settle.'+i; h+=`<div class="mline">${mfi(Q+'.lbl','Name',s.lbl)}${mfi(Q+'.a','Amount $',s.a,'n')}${mfi(Q+'.w','Warning (optional)',s.w)}${mop('settle-','Remove',ci,gi,i,'danger')}</div>`; });
+  h+=mop('settle+','+ Add a bonus',ci,gi,null,'sec');
+  h+=`<h5 class="msub">Cash bonuses</h5>`;
+  (g.cash||[]).forEach((c,i)=>{ const Q=P+'.cash.'+i; h+=`<div class="mline">${mfi(Q+'.lbl','Name',c.lbl||c.m||'')}${mfi(Q+'.a','Amount $',c.a,'n')}${mop('cash-','Remove',ci,gi,i,'danger')}</div>`; });
+  h+=mop('cash+','+ Add a cash bonus',ci,gi,null,'sec')+mfi(P+'.cashNote','Note shown under the cash bonuses',g.cashNote);
+  h+=`<h5 class="msub">Cash-or-finance table</h5><div class="hint" style="margin-top:6px">One row per model. Name it like the model (1025R), or use All models, Open Station, CAB, 3E, 3D. Put 0 where a column doesn’t apply.</div>`;
+  if(ct){
+    h+=mfi(P+'.cashTable.note','Table note',ct.note)+`<div class="mrow2">${mfi(P+'.cashTable.cols.0','Column 1 name',ct.cols[0])}${mfi(P+'.cashTable.cols.1','Column 2 name',ct.cols[1])}</div>`;
+    ct.rows.forEach((r,i)=>{ const Q=P+'.cashTable.rows.'+i; h+=`<div class="mline">${mfi(Q+'.m','Model(s)',r.m)}${mfi(Q+'.vals.0',ct.cols[0]+' $',r.vals[0],'n')}${mfi(Q+'.vals.1',ct.cols[1]+' $',r.vals[1],'n')}${mop('ct-','Remove',ci,gi,i,'danger')}</div>`; });
+  }
+  h+=mop('ct+','+ Add a row',ci,gi,null,'sec');
+  h+=`<div style="margin-top:18px">${mop('grp-','Remove this program',ci,gi,null,'danger')}</div>`;
+  return h;
 }
+function renderManage(){
+  const t=ghTarget(), has=!!ghToken(), ps=photoStats();
+  let h=`<div class="wrap page mng"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div><h1>Manage</h1><p class="lead">Everything you update is here. Changes stay on this device until you tap <b>Publish</b> in the dark bar — then every phone gets them.</p></div><button class="btn sm ghost" data-act="admin" style="margin-top:6px;flex:none">Leave Manage</button></div>`;
+
+  /* incentive programs */
+  let inc='';
+  D.categories.forEach((cat,ci)=>{
+    const gs=cat.groups.map((g,gi)=>acc(`g-${ci}-${gi}`,esc(g.label||'Program'),`Bulletin ${esc(g.bul||'—')} · expires ${esc(g.exp||'—')}`,grpHtml(g,ci,gi))).join('');
+    inc+=acc('c-'+ci,`${esc(cat.icon||'')} ${esc(cat.name)}`,cat.groups.length+' program'+(cat.groups.length===1?'':'s'),gs+mop('grp+','+ Add a program',ci,null,null,'sec'));
+  });
+  const tiers=[2,3,4,5].map(i=>mfi('implTiers.'+i+'.bonus',(D.implTiers[i].label)+' implements → bonus $',D.implTiers[i].bonus,'n')).join('');
+  h+=`<h2 class="mh">Incentives</h2>`+acc('inc','Incentive programs','Amounts, bulletin numbers and expiry dates',inc)+acc('tiers','Implement bonus tiers','What each qualifying implement count earns',`<div class="mrow2">${tiers}</div>`);
+
+  /* bulletins and text */
+  const bul=(D.bulletins||[]).map((b,i)=>`<div class="mline" style="display:block;padding:0 12px 12px"><div class="mrow2">${mfi('bulletins.'+i+'.num','Bulletin #',b.num)}${mfi('bulletins.'+i+'.date','Expires / date',b.date)}</div>${mfi('bulletins.'+i+'.title','Title',b.title)}${mft('bulletins.'+i+'.note','Summary',b.note)}${mop('bul-','Remove this bulletin',i,null,null,'danger')}</div>`).join('');
+  const rules=((D.content||{}).houseRules||[]).map((r,i)=>`<div class="mline" style="display:block;padding:0 12px 12px">${mfi('content.houseRules.'+i+'.title','Title',r.title)}${mft('content.houseRules.'+i+'.body','Text',r.body)}${mop('rule-','Remove',i,null,null,'danger')}</div>`).join('');
+  const chk=((D.content||{}).checklist||[]).map((r,i)=>`<div class="mline" style="display:block;padding:0 12px 12px">${mfi('content.checklist.'+i+'.text','Step',r.text)}${mfi('content.checklist.'+i+'.warn','Warning (optional)',r.warn)}${mop('chk-','Remove',i,null,null,'danger')}</div>`).join('');
+  h+=`<h2 class="mh">Programs tab</h2>`+acc('bul','Bulletins',(D.bulletins||[]).length+' listed',bul+mop('bul+','+ Add a bulletin',null,null,null,'sec'))+acc('rules','House rules',((D.content||{}).houseRules||[]).length+' rules',rules+mop('rule+','+ Add a rule',null,null,null,'sec'))+acc('chk','“Before you close” checklist',((D.content||{}).checklist||[]).length+' steps',chk+mop('chk+','+ Add a step',null,null,null,'sec'));
+
+  /* prices */
+  const pr=catKeys().map(k=>acc('p-'+k,esc(D.models[k].label),D.models[k].list.length+' models',D.models[k].list.map((m,i)=>`<div class="mprice"><div>${esc(m.label)}<small>${esc(spec(m))}</small></div><input data-path="models.${esc(k)}.list.${i}.price" data-t="n" inputmode="decimal" value="${esc(m.price)}"></div>`).join(''))).join('');
+  h+=`<h2 class="mh">Prices &amp; models</h2>`+acc('prices','Update prices','Type a new price — it saves as you go',pr)+`<div style="margin:0 0 14px"><button class="btn sec" data-act="medit" data-id="">+ Add a new model</button><div class="hint">To rename a model, move it to another program, or remove it, open it in the catalog and tap <b>Edit this model</b>.</div></div>`;
+
+  /* photos */
+  h+=`<h2 class="mh">Photos &amp; attachments</h2><div class="blk2"><div class="hint" style="margin:0 0 10px"><b>${ps.hasM}</b> of ${ps.ms.length} models and <b>${ps.hasA}</b> of ${ps.as.length} attachments have a photo.</div><button class="btn pri blk100" data-act="bulk">Add many photos at once</button><div class="hint">Name each picture like the model — <b>2025R.jpg</b>, <b>Z920M 48.jpg</b>, <b>RC2048.jpg</b> — and they’re matched for you. For one photo, open a model and tap its camera.</div><div style="margin-top:10px"><button class="btn sm ghost" data-act="bmiss">Copy list of names still needed</button></div><div class="hint" style="margin-top:12px">Which attachments fit a tractor: open the tractor in the catalog and tap <b>Choose attachments that fit</b>.</div></div>`;
+
+  /* team + key */
+  h+=`<h2 class="mh">Team &amp; connection</h2><div class="blk2"><h4>Manage PIN</h4>${mfi('adminPin','Manage PIN (4 or more digits)',D.adminPin,'p')}<div class="hint">Changing it takes effect for everyone when you Publish. Anyone with the website’s data file can read it, so treat it as a casual lock.</div>${mfi('settings.storePhone','Store phone (shows on quotes later)',(D.settings||{}).storePhone)}</div>
+  <div class="blk2"><h4>Publishing key</h4><div class="hint" style="margin:0 0 10px">${has?'<b style="color:var(--money)">Connected in this browser</b> to '+esc(t.owner+'/'+t.repo)+'.':'Not connected. Paste your GitHub key once to publish.'}</div><input type="password" id="tk" placeholder="github_pat_…" autocomplete="off" style="width:100%;height:46px;border:1px solid var(--line);border-radius:12px;padding:0 12px;font-size:16px;margin-bottom:10px"><div style="display:flex;gap:8px"><button class="btn pri" style="flex:1" data-act="tksave">Save key</button><button class="btn ghost" data-act="tkclear">Disconnect</button></div><div id="tkMsg" class="hint"></div></div></div>`;
+  $('#main').innerHTML=h;
+}
+function openManage(){ S.tab='manage'; render(); window.scrollTo(0,0); }
+function renderManageKeep(){ const y=window.scrollY; renderManage(); window.scrollTo(0,y); renderPubBar(); }
+function manageOp(t){
+  const op=t.dataset.op, a=parseInt(t.dataset.a), b=parseInt(t.dataset.b), c=parseInt(t.dataset.c);
+  const cat=D.categories[a], g=cat&&cat.groups[b]; D.content=D.content||{}; D.content.houseRules=D.content.houseRules||[]; D.content.checklist=D.content.checklist||[]; D.bulletins=D.bulletins||[];
+  if(op==='settle+'){ g.settle.push({lbl:'New bonus',a:0,w:''}); }
+  else if(op==='settle-'){ g.settle.splice(c,1); }
+  else if(op==='cash+'){ g.cash.push({lbl:'Cash bonus',a:0}); }
+  else if(op==='cash-'){ g.cash.splice(c,1); }
+  else if(op==='ct+'){ if(!g.cashTable) g.cashTable={note:'',cols:['With JD Finance','Cash Purchase'],rows:[]}; g.cashTable.rows.push({m:'Model',vals:[0,0]}); }
+  else if(op==='ct-'){ g.cashTable.rows.splice(c,1); }
+  else if(op==='grp+'){ cat.groups.push({id:cat.id+'_'+Date.now().toString(36),label:'New program',bul:'',exp:'',impl:false,rs:0,rsNote:'',cash:[],cashNote:'',settle:[],cashTable:{note:'',cols:['With JD Finance','Cash Purchase'],rows:[]}}); S.open.add('c-'+a); }
+  else if(op==='grp-'){ const n=allModels().filter(o=>o.m.incCat===cat.id&&o.m.incGrp===g.id).length; if(n){ toast(n+' model'+(n>1?'s use':' uses')+' this program — move '+(n>1?'them':'it')+' to another program first'); return; } if(!confirm('Remove this program?')) return; cat.groups.splice(b,1); }
+  else if(op==='bul+'){ D.bulletins.unshift({id:'bul'+Date.now().toString(36),num:'',title:'New bulletin',date:'',note:''}); S.open.add('bul'); }
+  else if(op==='bul-'){ if(!confirm('Remove this bulletin?')) return; D.bulletins.splice(a,1); }
+  else if(op==='rule+'){ D.content.houseRules.push({title:'New rule',body:''}); S.open.add('rules'); }
+  else if(op==='rule-'){ if(!confirm('Remove this rule?')) return; D.content.houseRules.splice(a,1); }
+  else if(op==='chk+'){ D.content.checklist.push({text:'New step',warn:''}); S.open.add('chk'); }
+  else if(op==='chk-'){ D.content.checklist.splice(a,1); }
+  markDirty(); renderManageKeep();
+}
+function applyField(el){
+  const t=el.dataset.t; let v;
+  if(t==='b') v=el.checked; else if(t==='n') v=parseFloat(String(el.value).replace(/[$,\s]/g,''))||0; else v=el.value.trim();
+  if(t==='p'&&!/^\d{4,10}$/.test(v)){ toast('The PIN needs 4 or more digits'); el.value=D.adminPin; return; }
+  setP(D,el.dataset.path,v); if(t==='n') el.value=v; markDirty();
+  if(el.dataset.path==='adminPin') toast('PIN changed — tap Publish so everyone gets it');
+}
+
+/* add / edit / remove a model */
+function openModelEdit(id){ const f=id?findModel(id):null; S.sheet={mode:f?'edit':'add',id:f?id:null,k:f?f.k:catKeys()[0],draft:null}; drawModelEdit(); }
+function drawModelEdit(){
+  const sh=S.sheet, k=sh.k, mc=D.models[k], edit=sh.mode==='edit', cur=edit?findModel(sh.id).m:{};
+  const d=sh.draft||{label:cur.label||'',hp:cur.hp||'',price:cur.price||''};
+  const incCat=mc.noInc?null:((mc.list.find(x=>x.incCat)||{}).incCat||null), cat=incCat?getCat(incCat):null;
+  const grp=cat?`<label class="mf"><span>Incentive program</span><select id="meGrp"><option value="">None</option>${cat.groups.map(g=>`<option value="${esc(g.id)}"${g.id===cur.incGrp?' selected':''}>${esc(g.label)}</option>`).join('')}</select></label>`:'';
+  const catSel=edit?'':`<label class="mf"><span>Category</span><select id="meCat">${catKeys().map(x=>`<option value="${esc(x)}"${x===k?' selected':''}>${esc(D.models[x].label)}</option>`).join('')}</select></label>`;
+  $('#sheetHost').innerHTML=`<div class="sheet" data-act="sheetx"><div class="sheet-in"><h3>${edit?'Edit '+esc(cur.label):'Add a model'}</h3><div class="blk2" style="background:#fff;border-radius:18px;padding:4px 16px 16px;margin-bottom:12px">${catSel}
+  <label class="mf"><span>Name</span><input id="meLabel" value="${esc(d.label)}"></label>
+  <div class="mrow2"><label class="mf"><span>Horsepower</span><input id="meHp" inputmode="decimal" value="${esc(d.hp)}"></label><label class="mf"><span>Price $</span><input id="mePrice" inputmode="decimal" value="${esc(d.price)}"></label></div>${grp}</div>
+  <button class="btn pri blk100" data-act="mesave">${edit?'Save changes':'Add model'}</button>
+  ${edit?`<div style="text-align:center;margin-top:10px"><button class="btn sm danger" data-act="medel">Remove this model</button></div>`:''}
+  <div style="text-align:center;margin-top:6px"><button class="btn sm ghost" data-act="sheetx">Cancel</button></div></div></div>`;
+}
+function readME(){ return {label:($('#meLabel')||{}).value||'',hp:($('#meHp')||{}).value||'',price:($('#mePrice')||{}).value||''}; }
+function saveModelEdit(){
+  const sh=S.sheet, k=sh.k, mc=D.models[k], r=readME(), label=r.label.trim(), price=parseFloat(String(r.price).replace(/[$,\s]/g,'')), hp=parseFloat(r.hp);
+  if(!label){ toast('Give the model a name'); return; } if(!(price>=0)){ toast('Enter a price'); return; }
+  const gsel=$('#meGrp'), grpId=gsel?gsel.value:'';
+  if(sh.mode==='edit'){
+    const m=findModel(sh.id).m; m.label=label; m.price=price; if(hp>0) m.hp=hp; else delete m.hp; if(gsel){ if(grpId) m.incGrp=grpId; else delete m.incGrp; }
+  } else {
+    const incCat=mc.noInc?null:((mc.list.find(x=>x.incCat)||{}).incCat||null);
+    let id=label.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'model', n=id, i=2; while(findModel(n)) n=id+'-'+(i++);
+    const m={id:n,label,price}; if(hp>0) m.hp=hp; if(incCat){ m.incCat=incCat; if(grpId) m.incGrp=grpId; }
+    mc.list.push(m);
+  }
+  markDirty(); S.sheet=null; $('#sheetHost').innerHTML=''; render(); if(S.cur) openModel(S.cur.m.id,true); toast(sh.mode==='edit'?'Model saved':'Model added — tap Publish when ready');
+}
+function deleteModel(){
+  const id=S.sheet.id, f=findModel(id); if(!f) return;
+  if(!confirm('Remove the '+f.m.label+' from the catalog?\n\nIts photo link and attachment list are removed too.')) return;
+  D.models[f.k].list=D.models[f.k].list.filter(x=>x.id!==id); if(D.modelImages) delete D.modelImages[id]; if(D.compat) delete D.compat[id];
+  markDirty(); S.sheet=null; $('#sheetHost').innerHTML=''; if(S.cur) closeDrawer(); render(); toast('Model removed — tap Publish when ready');
+}
+
 async function saveTok(){
   const v=($('#tk')||{}).value.trim(); const m=$('#tkMsg'); if(!v){ m.textContent='Paste the key first.'; return; }
   m.textContent='Checking…'; try{ const t=ghTarget(); const r=await fetch('https://api.github.com/repos/'+t.owner+'/'+t.repo,{headers:ghHeaders(v)});
@@ -813,6 +966,10 @@ document.addEventListener('click',e=>{
   else if(a==='cgrp'){ const tp=t.dataset.t; D.attachments.filter(x=>x.cat===tp).forEach(x=>S.sheet.sel.add(x.id)); const sc=$('.sheet-in').scrollTop; drawCompat(); $('.sheet-in').scrollTop=sc; }
   else if(a==='csave') saveCompat();
   else if(a==='publish') publish();
+  else if(a==='mop') manageOp(t);
+  else if(a==='medit') openModelEdit(t.dataset.id||null);
+  else if(a==='mesave') saveModelEdit();
+  else if(a==='medel') deleteModel();
   else if(a==='bulk') pickBulk();
   else if(a==='bmiss') copyMissing();
   else if(a==='blike'){ const r=S.bulk.rows[+t.dataset.i]; r.useLike=!r.useLike; const sc=$('.sheet-in').scrollTop; drawBulk(); $('.sheet-in').scrollTop=sc; }
@@ -830,12 +987,15 @@ document.addEventListener('input',e=>{
   else if(id==='cq'){ S.sheet.q=e.target.value.toLowerCase(); const pos=e.target.selectionStart; drawCompat(); const el=$('#cq'); el.focus(); el.setSelectionRange(pos,pos); }
 });
 document.addEventListener('change',e=>{
+  if(e.target.dataset&&e.target.dataset.path){ applyField(e.target); return; }
+  if(e.target.id==='meCat'){ S.sheet.draft=readME(); S.sheet.k=e.target.value; drawModelEdit(); return; }
   if(e.target.id==='copyFrom'&&e.target.value){ S.sheet.sel=new Set(compatFor(e.target.value)); drawCompat(); }
   else if(e.target.id==='filePick') onPhoto(e.target.files[0]);
   else if(e.target.id==='bulkPick') openBulk(Array.from(e.target.files));
 });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('#sheetHost').innerHTML) $('#sheetHost').innerHTML=''; else if(S.cur) closeDrawer(); } if(e.key==='Enter'&&$('#pin')&&document.activeElement===$('#pin')) pinOk(); });
 document.addEventListener('focusout',e=>{ if(e.target.id==='q') S._focusQ=false; });
+document.addEventListener('toggle',e=>{ const d=e.target; if(d&&d.classList&&d.classList.contains('acc')){ const id=d.id.slice(3); if(d.open) S.open.add(id); else S.open.delete(id); } },true);
 boot();
 </script>
 </body>
